@@ -1,18 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 13:44:36 by davli             #+#    #+#             */
-/*   Updated: 2024/05/13 13:45:03 by davli            ###   ########.fr       */
+/*   Created: 2024/05/14 12:37:20 by davli             #+#    #+#             */
+/*   Updated: 2024/05/14 15:25:23 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putchar(char c)
+char	*ft_strdup(char *src)
 {
-	write(1, &c, 1);
+	int		i;
+	int		size;
+	char	*dup;
+
+	i = 0;
+	size = 0;
+	while (src[size])
+		size++;
+	dup = malloc(size * sizeof(char) + 1);
+	if (!dup)
+		return (0);
+	while (i < size)
+	{
+		dup[i] = src[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }
+/*
+#include <stdio.h>
+int	main()
+{
+	char	*src = "Yo tout le monde c'est Squeezie";
+
+	printf("%s", ft_strdup(src));
+}
+*/

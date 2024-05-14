@@ -1,34 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 14:38:14 by davli             #+#    #+#             */
-/*   Updated: 2024/05/13 16:48:30 by davli            ###   ########.fr       */
+/*   Created: 2024/05/14 12:44:43 by davli             #+#    #+#             */
+/*   Updated: 2024/05/14 16:29:25 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
+#include <stdlib.h>
+
+int	*ft_range(int min, int max)
 {
 	int	i;
+	int	size;
+	int	*array;
 
-	i = 1;
-	if (nb < 0)
+	i = 0;
+	if (min >= max)
+		return (NULL);
+	size = max - min;
+	array = malloc(size * sizeof(int));
+	if (!array)
 		return (0);
-	while (i < nb)
+	while (min < max)
 	{
-		if (i == nb / i)
-			return (i);
+		array[i] = min;
+		min++;
 		i++;
 	}
-	return (0);
+	return (array);
 }
 /*
 #include <stdio.h>
 int	main()
 {
-	printf("%d", ft_sqrt(2147395600));
+	int	min = 1;
+	int	max = 500;
+	int	*tab;
+	int	i = 0;
+
+	tab = ft_range(min, max);
+	while (i < max - min)
+	{
+		printf("%d, ", tab[i]);
+		i++;
+	}
 }
 */

@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 14:11:40 by davli             #+#    #+#             */
-/*   Updated: 2024/05/13 16:31:42 by davli            ###   ########.fr       */
+/*   Created: 2024/05/14 13:09:35 by davli             #+#    #+#             */
+/*   Updated: 2024/05/14 16:18:15 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_recursive_factorial(int nb)
-{
-	if (nb < 0 || nb > 12)
-		return (0);
-	if (nb == 0 || nb == 1)
-		return (1);
-	return (nb * ft_recursive_factorial(nb - 1));
-}
+#ifndef FT_POINT_H
+# define FT_POINT_H
 
-#include <stdio.h>
-int	main()
+typedef struct s_point
 {
-	printf("%d", ft_recursive_factorial(13));
-}
+	int	x;
+	int	y;
+}	t_point;
 
+#endif

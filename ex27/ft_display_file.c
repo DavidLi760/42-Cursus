@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_display_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 14:02:40 by davli             #+#    #+#             */
-/*   Updated: 2024/05/13 14:19:22 by davli            ###   ########.fr       */
+/*   Created: 2024/05/14 16:36:31 by davli             #+#    #+#             */
+/*   Updated: 2024/05/14 17:10:18 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_factorial(int nb)
-{
-	int	result;
+#include <stdlib.h>
+#include <fcntl.h>
 
-	result = 1;
-	if (nb < 0)
-		return (0);
-	while (nb > 1)
-	{
-		result *= nb;
-		nb--;
-	}
-	return (result);
-}
-/*
-#include <stdio.h>
-int	main()
+int	ft_display_file(char *file)
 {
-	printf("%d", ft_iterative_factorial(6));
+	int		file;
+	int		read;
+	char	*stock;
+
+	file = open(file, O_RDONLY);
 }
-*/
+
+int	main(int argc, char **argv)
+{
+	if (argc == 1)
+		write(2, "File name missing.\n", 19);
+	else if (argc > 2)
+		write(2, "Too many arguments.\n", 20);
+	else if (!ft_display_file(argv[1]))
+		write(2, "Cannot read file.\n", 18);
+	return (0);
+}
