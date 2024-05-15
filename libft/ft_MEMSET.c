@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_MEMSET.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 16:49:05 by davli             #+#    #+#             */
-/*   Updated: 2024/05/13 16:53:16 by davli            ###   ########.fr       */
+/*   Created: 2024/05/15 17:14:30 by davli             #+#    #+#             */
+/*   Updated: 2024/05/15 17:36:45 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c);
-
-void	ft_putstr(char *str)
+void	*memset(void *s, int c, sizeof())
 {
-	while (*str)
-		ft_putchar(*str++);
+	int	i;
+
+	i = 0;
+	while (
 }
-/*
-int	main()
-{
-	ft_putstr("Salut");
-}
-*/

@@ -1,44 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 12:37:20 by davli             #+#    #+#             */
-/*   Updated: 2024/05/14 15:25:23 by davli            ###   ########.fr       */
+/*   Created: 2024/05/15 17:05:00 by davli             #+#    #+#             */
+/*   Updated: 2024/05/15 17:06:48 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-char	*ft_strdup(char *src)
+int	ft_isascii(int c)
 {
-	int		i;
-	int		size;
-	char	*dup;
-
-	i = 0;
-	size = 0;
-	while (src[size])
-		size++;
-	dup = malloc(size * sizeof(char) + 1);
-	if (!dup)
-		return (0);
-	while (i < size)
-	{
-		dup[i] = src[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	char	*src = "Yo tout le monde c'est Squeezie";
-
-	printf("%s", ft_strdup(src));
-}
-*/

@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_div_mod.c                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 13:56:53 by davli             #+#    #+#             */
-/*   Updated: 2024/05/13 14:02:15 by davli            ###   ########.fr       */
+/*   Created: 2024/05/15 16:49:30 by davli             #+#    #+#             */
+/*   Updated: 2024/05/15 17:00:17 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_div_mod(int a, int b, int *div, int *mod)
+int	ft_isalpha(int c)
 {
-	*div = a / b;
-	*mod = a % b;
+	if (c <= 'Z' && c >= 'A' || c <= 'z' && c >= 'a')
+		return (1);
+	return (0);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	int	a;
-	int	b;
-	int	*div = &a;
-	int	*mod = &b;
-
-	a = 50;
-	b = 42;
-	ft_div_mod(a, b, div, mod);
-	printf("%d, %d", a, b);
-}
-*/
