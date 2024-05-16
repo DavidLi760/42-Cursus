@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:14:30 by davli             #+#    #+#             */
-/*   Updated: 2024/05/16 16:37:02 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/16 18:38:50 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -17,7 +17,10 @@ void	*ft_memset(void *s, int c, size_t len)
 
 	str = (unsigned char *)s;
 	while (len)
-		str[--len] = c;
+	{
+		len--;
+		str[len] = c;
+	}
 	return (s);
 }
 /*
