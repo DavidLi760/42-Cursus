@@ -6,11 +6,11 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:10:01 by davli             #+#    #+#             */
-/*   Updated: 2024/05/15 17:13:49 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/16 12:20:05 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 
