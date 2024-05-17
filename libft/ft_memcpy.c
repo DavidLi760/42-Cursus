@@ -6,22 +6,35 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:53:09 by davli             #+#    #+#             */
-/*   Updated: 2024/05/17 18:53:40 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/17 19:30:07 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char *d;
-	unsigned char *s;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	if (!dst || !src)
-		return (dst);
-	d = (unsigned char *)dst;
+	if (!dest || !src)
+		return (dest);
+	d = (unsigned char *)dest;
 	s = (unsigned char *)src;
-	while (n--)
+	while (n)
+	{
+		n--;
 		d[n] = s[n];
-	return (dst);
+	}
+	return (dest);
 }
+/*
+int main()
+{
+    char src[] = "Yo tout le monde c'est";
+    char dst[20];
+    ft_memcpy(dst, src, strlen(src) + 1);
+    printf("ft_memcpy: %s\n", dst);
+    return 0;
+}
+*/
