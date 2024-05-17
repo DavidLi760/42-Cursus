@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 16:59:51 by davli             #+#    #+#             */
-/*   Updated: 2024/05/17 18:36:05 by davli            ###   ########.fr       */
+/*   Created: 2024/05/17 17:53:43 by davli             #+#    #+#             */
+/*   Updated: 2024/05/17 18:36:42 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t len)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	unsigned char	*str;
+	size_t	startlen;
+	size_t	retlen;
 
-	str = (unsigned char *)s;
-	while (len != 0)
+	startlen = 0;
+	while (startlen < dstsize && dst[startlen])
+		startlen++;
+	retlen = ft_strlen(src) + startlen;
+	dst += startlen;
+	if (dstsize != startlen)
 	{
-		len--;
-		str[len] = '\0';
+		while (*src)
+		{
+			if (dstsize > startlen + 1)
+			{
+				*dst++ = *src;
+				dstsize--;
+			}
+			src++;
+		}
+		*dst = 0;
 	}
+	return (retlen);
 }
-/*
-#include <stdio.h>
-int     main()
-{
-        int     i = 0;
-        char    tab[5];
-	ft_bzero(tab, 5);
-        while (i < 5)
-        {
-                printf("%c", tab[i]);
-                i++;
-        }
-}
-*/

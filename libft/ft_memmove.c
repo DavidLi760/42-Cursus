@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 16:59:51 by davli             #+#    #+#             */
-/*   Updated: 2024/05/17 18:36:05 by davli            ###   ########.fr       */
+/*   Created: 2024/05/17 18:52:20 by davli             #+#    #+#             */
+/*   Updated: 2024/05/17 18:52:26 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*str;
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
 
-	str = (unsigned char *)s;
-	while (len != 0)
-	{
-		len--;
-		str[len] = '\0';
-	}
+	if (!src && !dst)
+		return (dst);
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	i = 0;
+	if (d > s)
+		while (len--)
+			d[len] = s[len];
+	else
+		while (i < len)
+		{
+			d[i] = s[i];
+			++i;
+		}
+	return (dst);
 }
-/*
-#include <stdio.h>
-int     main()
-{
-        int     i = 0;
-        char    tab[5];
-	ft_bzero(tab, 5);
-        while (i < 5)
-        {
-                printf("%c", tab[i]);
-                i++;
-        }
-}
-*/

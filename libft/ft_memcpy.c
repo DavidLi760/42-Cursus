@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 16:59:51 by davli             #+#    #+#             */
-/*   Updated: 2024/05/17 18:36:05 by davli            ###   ########.fr       */
+/*   Created: 2024/05/17 18:53:09 by davli             #+#    #+#             */
+/*   Updated: 2024/05/17 18:53:40 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t len)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned char	*str;
+	unsigned char *d;
+	unsigned char *s;
 
-	str = (unsigned char *)s;
-	while (len != 0)
-	{
-		len--;
-		str[len] = '\0';
-	}
+	if (!dst || !src)
+		return (dst);
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	while (n--)
+		d[n] = s[n];
+	return (dst);
 }
-/*
-#include <stdio.h>
-int     main()
-{
-        int     i = 0;
-        char    tab[5];
-	ft_bzero(tab, 5);
-        while (i < 5)
-        {
-                printf("%c", tab[i]);
-                i++;
-        }
-}
-*/

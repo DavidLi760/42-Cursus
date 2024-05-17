@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 16:59:51 by davli             #+#    #+#             */
-/*   Updated: 2024/05/17 18:36:05 by davli            ###   ########.fr       */
+/*   Created: 2024/05/17 17:53:35 by davli             #+#    #+#             */
+/*   Updated: 2024/05/17 18:37:00 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t len)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	unsigned char	*str;
+	size_t	i;
 
-	str = (unsigned char *)s;
-	while (len != 0)
+	if (!dst || !src)
+		return (0);
+	i = 0;
+	while (dstsize != 0 && i < dstsize - 1 && src[i])
 	{
-		len--;
-		str[len] = '\0';
+		dst[i] = src[i];
+		++i;
 	}
+	if (i < dstsize)
+		dst[i] = 0;
+	while (src[i])
+		++i;
+	return (i);
 }
-/*
-#include <stdio.h>
-int     main()
-{
-        int     i = 0;
-        char    tab[5];
-	ft_bzero(tab, 5);
-        while (i < 5)
-        {
-                printf("%c", tab[i]);
-                i++;
-        }
-}
-*/
