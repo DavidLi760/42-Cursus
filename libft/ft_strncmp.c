@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 16:48:36 by davli             #+#    #+#             */
-/*   Updated: 2024/05/18 19:00:14 by davli            ###   ########.fr       */
+/*   Created: 2024/05/18 17:50:31 by davli             #+#    #+#             */
+/*   Updated: 2024/05/18 19:00:32 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
-	char	*s1;
 
+	if (!n)
+		return (0);
 	i = 0;
-	s1 = (char *)s;
-	while (1)
+	while (*s1 == *s2)
 	{
-		if (s1[i] == c)
-			return (s1 + i);
-		else if (s1[i++] == 0)
+		if (*s1 == 0)
+			return (0);
+		if (++i >= n)
 			break ;
+		++s1;
+		++s2;
 	}
-	return (NULL);
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
+/*
+int main(void)
+{
+    char *str1 = "Hello, world!";
+    char *str2 = "Hello, 42!";
+    int result = ft_strncmp(str1, str2, 8);
+    printf("Comparison result: %d\n", result);
+    return 0;
+}
+*/
