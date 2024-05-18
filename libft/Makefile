@@ -33,21 +33,6 @@ SRCS =	ft_atoi.c \
 		ft_strncmp.c \
 		ft_substr.c
 
-OBJS = ${SRCS:.c=.o}
-
-SRCSBONUS =	ft_lstnew.c \
-			ft_lstadd_front.c \
-			ft_lstsize.c \
-			ft_lstlast.c \
-			ft_lstadd_back.c \
-			ft_lstdelone.c \
-			ft_lstclear.c \
-			ft_lstiter.c \
-			ft_lstmap.c
-
-OBJSBONUS	= ${SRCSBONUS:.c=.o}
-
-
 NAME = libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -60,10 +45,6 @@ all: ${NAME}
 
 $(NAME): $(OBJS)
 			ar -rcs $(NAME) $(OBJS)
-
-
-bonus: ${OBJS} ${OBJSBONUS}
-			ar -rcs ${NAME} ${OBJS} ${OBJSBONUS}
 
 clean:
 			${RM} ${OBJS} ${OBJSBONUS}
