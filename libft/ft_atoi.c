@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/20 17:00:08 by davli             #+#    #+#             */
+/*   Updated: 2024/05/20 17:03:44 by davli            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
+	int		i;
+	int		sign;
 	long	nbr;
 
 	i = 0;
 	sign = 1;
 	nbr = 0;
-	while (str[i] > 8 && str[i] < 14 || str[i] == ' ')
+	while ((str[i] > 8 && str[i] < 14) || str[i] == ' ')
 		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
@@ -29,6 +41,6 @@ int	ft_atoi(const char *str)
 #include <stdio.h>
 int	main()
 {
-	printf("%d\n", ft_atoi("-2147483648"));
+	printf("%d\n", ft_atoi("            -2147483648"));
 }
 */

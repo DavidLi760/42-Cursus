@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 17:01:23 by davli             #+#    #+#             */
-/*   Updated: 2024/05/18 19:11:31 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/20 16:39:33 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,9 @@ char	*ft_strrchr(const char *s, int c)
 			return (s1 + i);
 	return (NULL);
 }
+/*
+int	main()
+{
+	printf("%s\n", ft_strrchr("Salut tu vas bien?", 't'));
+}
+*/

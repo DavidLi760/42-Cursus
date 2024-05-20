@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/20 16:49:02 by davli             #+#    #+#             */
+/*   Updated: 2024/05/20 16:50:10 by davli            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
@@ -9,15 +21,15 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 		if (str[i++] == (unsigned char)c)
-			return ((void *)(str + i));
+			return (str + i);
 	return (NULL);
 }
 /*
 int main(void)
 {
     const char str[] = "Hello, world!";
-    int c = 'H';
-    char *result = ft_memchr(str, c, 1);
+    int c = 'o';
+    char *result = ft_memchr(str, c, 5);
 
     if (result)
         printf("Character '%c' found at position: %ld\n", c, result - str);

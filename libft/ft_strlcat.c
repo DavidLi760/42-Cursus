@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:53:43 by davli             #+#    #+#             */
-/*   Updated: 2024/05/18 16:00:35 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/20 16:25:56 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ size_t	ft_strlcat(char *dest, const char *src, size_t len)
 		{
 			if (len > dstlen + 1)
 			{
-				*dest++ = *src;
+				*dest = *src;
 				len--;
 			}
 			src++;
+			dest++;
 		}
 		*dest = 0;
 	}

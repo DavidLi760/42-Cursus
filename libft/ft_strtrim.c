@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 16:49:30 by davli             #+#    #+#             */
-/*   Updated: 2024/05/20 17:04:20 by davli            ###   ########.fr       */
+/*   Created: 2024/05/20 17:44:55 by davli             #+#    #+#             */
+/*   Updated: 2024/05/20 18:00:58 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	if ((c <= 'Z' && c >= 'A') || (c <= 'z' && c >= 'a'))
-		return (1);
-	return (0);
+	size_t	len;
+
+	if (!s1 || !set)
+		return (NULL);
+	len = ft_strlen(s1);
+	while (*s1 && ft_strchr(set, *s1) == 1)
+		s1++;
+	while (len && ft_strchr(set, s1[len]))
+		len--;
+	return (ft_substr(s1, 0, len + 1));
 }
+/*
+int	main()
+{
+	printf("%s", ft_strtrim("Yo tout le monde c'est Squeezieee", "Yeo"));
+}
+*/
