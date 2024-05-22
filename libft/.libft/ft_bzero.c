@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 17:44:55 by davli             #+#    #+#             */
-/*   Updated: 2024/05/21 19:52:46 by davli            ###   ########.fr       */
+/*   Created: 2024/05/16 16:59:51 by davli             #+#    #+#             */
+/*   Updated: 2024/05/16 18:38:09 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+void    ft_bzero(void *s, size_t len)
 {
-	size_t	len;
+	unsigned char	*str;
 
-	if (!s1 || !set)
-		return (NULL);
-	while (*s1 && ft_strchr(set, *s1))
-		s1++;
-	len = ft_strlen(s1);
-	while (len && ft_strchr(set, s1[len]))
+	str = (unsigned char *)s;
+	while (len != 0)
+	{
 		len--;
-	return (ft_substr(s1, 0, len + 1));
+		str[len] = '\0';
+	}
 }
 /*
-int	main()
+#include <stdio.h>
+int     main()
 {
-	printf("%s", ft_strtrim("Yo tout le monde c'est Squeezieee", "Yoe"));
+        int     i = 0;
+        char    tab[5];
+	ft_bzero(tab, 5);
+        while (i < 5)
+        {
+                printf("%c", tab[i]);
+                i++;
+        }
 }
 */

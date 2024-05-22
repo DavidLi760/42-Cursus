@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 17:44:55 by davli             #+#    #+#             */
-/*   Updated: 2024/05/21 19:52:46 by davli            ###   ########.fr       */
+/*   Created: 2024/05/15 17:00:26 by davli             #+#    #+#             */
+/*   Updated: 2024/05/15 17:04:03 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+int	ft_isdigit(int c)
 {
-	size_t	len;
-
-	if (!s1 || !set)
-		return (NULL);
-	while (*s1 && ft_strchr(set, *s1))
-		s1++;
-	len = ft_strlen(s1);
-	while (len && ft_strchr(set, s1[len]))
-		len--;
-	return (ft_substr(s1, 0, len + 1));
+	if (c <= '9' && c >= '0')
+		return (1);
+	return (0);
 }
-/*
-int	main()
-{
-	printf("%s", ft_strtrim("Yo tout le monde c'est Squeezieee", "Yoe"));
-}
-*/
