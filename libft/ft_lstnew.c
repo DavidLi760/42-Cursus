@@ -9,6 +9,5 @@ t_list	*ft_lstnew(void *content)
 		return (NULL);
 	head->content = content;
 	head->next = NULL;
-	head->prev = NULL;
 	return (head);
 }
