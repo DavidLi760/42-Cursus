@@ -25,9 +25,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 		len--;
 	return (ft_substr(s1, 0, len + 1));
 }
-
+/*
 int	main()
 {
 	printf("%s", ft_strtrim("Yo tout le monde c'est Squeezieee", "Yeo"));
 }
-
+*/
