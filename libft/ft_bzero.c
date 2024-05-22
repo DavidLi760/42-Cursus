@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 16:59:51 by davli             #+#    #+#             */
-/*   Updated: 2024/05/17 18:36:05 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/22 18:06:57 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_bzero(void *s, size_t n)
 {
 	unsigned char	*str;
 
+	if (!s)
+		return (NULL);
 	str = (unsigned char *)s;
 	while (n != 0)
 	{

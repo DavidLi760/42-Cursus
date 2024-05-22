@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:52:20 by davli             #+#    #+#             */
-/*   Updated: 2024/05/17 19:30:20 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/22 18:32:23 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,15 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	return (dest);
 }
 /*
-int main() {
-    char str[] = "Hello, World!";
-    char buffer[20];
+int main()
+{
+    char data[20] = "Hello, World!";
 
-    ft_memmove(buffer, str, strlen(str) + 1);
-    printf("ft_memmove: %s\n", buffer);
+    printf("Avant memmove: %s\n", data);
+
+    ft_memmove(data + 7, data, 5);
+
+    printf("Après memmove: %s\n", data);
 
     return 0;
 }

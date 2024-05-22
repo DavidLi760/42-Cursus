@@ -6,18 +6,18 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:10:01 by davli             #+#    #+#             */
-/*   Updated: 2024/05/16 12:20:05 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/22 17:32:35 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
-	{	
+	{
 		i++;
 	}
 	return (i);

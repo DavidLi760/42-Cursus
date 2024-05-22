@@ -1,19 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 17:05:00 by davli             #+#    #+#             */
-/*   Updated: 2024/05/15 17:06:48 by davli            ###   ########.fr       */
+/*   Created: 2024/05/22 16:46:33 by davli             #+#    #+#             */
+/*   Updated: 2024/05/22 17:20:44 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_isascii(int c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	size_t	nbr;
+
+	nbr = n;
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		nbr = -nbr;
+	}
+	if (nbr >= 10)
+		ft_putnbr_fd(nbr / 10, fd);
+	ft_putchar_fd(nbr % 10 + '0', fd);
 }
+/*
+int     main(int argc, char **argv)
+{
+	if (argc < 1)
+		return (0);
+	int	fd;
+	fd = open(argv[2], O_RDWR);
+	ft_putnbr_fd(atoi(argv[1]), fd);
+	close(fd);
+}
+*/

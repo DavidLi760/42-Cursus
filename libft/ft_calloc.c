@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:07:38 by davli             #+#    #+#             */
-/*   Updated: 2024/05/20 17:22:47 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/22 20:14:47 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*mem;
 
 	mem = malloc(nmemb * size);
-	if (!mem)
+	if (!mem || mem > 2147483647)
 		return (NULL);
 	ft_bzero(mem, nmemb * size);
 	return (mem);

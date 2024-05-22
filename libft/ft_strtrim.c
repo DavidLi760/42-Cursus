@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:44:55 by davli             #+#    #+#             */
-/*   Updated: 2024/05/21 19:52:46 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/22 15:51:57 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 		len--;
 	return (ft_substr(s1, 0, len + 1));
 }
-/*
+
 int	main()
 {
-	printf("%s", ft_strtrim("Yo tout le monde c'est Squeezieee", "Yoe"));
+	printf("%s", ft_strtrim("Yo tout le monde c'est Squeezieee", "Yeo"));
 }
-*/
+

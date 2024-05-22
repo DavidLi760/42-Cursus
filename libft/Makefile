@@ -1,4 +1,4 @@
-SRCS =	ft_atoi.c \
+SRCS =		ft_atoi.c \
 		ft_isalpha.c \
 		ft_itoa.c \
 		ft_memcpy.c \
@@ -47,7 +47,7 @@ $(NAME): $(OBJS)
 			ar -rcs $(NAME) $(OBJS)
 
 clean:
-			${RM} ${OBJS} ${OBJSBONUS}
+			${RM} ${OBJS}
 
 fclean: clean
 			${RM} ${NAME}
