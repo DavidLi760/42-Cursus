@@ -1,4 +1,4 @@
-SRCS =		ft_atoi.c \
+SRCS 	=	ft_atoi.c \
 		ft_isalpha.c \
 		ft_itoa.c \
 		ft_memcpy.c \
@@ -32,11 +32,24 @@ SRCS =		ft_atoi.c \
 		ft_strlcat.c \
 		ft_strncmp.c \
 		ft_substr.c
+OBJS 	=	${SRCS:.c=.o}
 
-NAME = libft.a
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
+BONUS 	=	ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c
+
+BONUS_OBJS	= ${BONUS:.c=.o}
+
+NAME 	=	libft.a
+CC 	=	gcc
+CFLAGS	=	-Wall -Wextra -Werror -I
+RM	=	rm -f
 
 all: ${NAME}
 
@@ -47,11 +60,14 @@ $(NAME): $(OBJS)
 			ar -rcs $(NAME) $(OBJS)
 
 clean:
-			${RM} ${OBJS}
+			${RM} ${OBJS} ${BONUS_OBJS}
 
 fclean: clean
 			${RM} ${NAME}
 
 re: fclean all
 
-.PHONY:		all clean fclean re
+bonus:		${OBJS} ${BONUS_OBJS}
+			ar rcs ${NAME} ${OBJS} ${BONUS_OBJS}
+
+.PHONY:		all clean fclean re bonus
