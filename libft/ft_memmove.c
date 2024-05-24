@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:52:20 by davli             #+#    #+#             */
-/*   Updated: 2024/05/22 18:32:23 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/24 17:43:52 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char	*s;
 	size_t			i;
 
-	if (!src || !dest)
+	if (!src && !dest)
 		return (dest);
 	d = (unsigned char *)dest;
 	s = (unsigned char *)src;
