@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 12:07:31 by davli             #+#    #+#             */
-/*   Updated: 2024/05/24 13:38:27 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/24 14:28:41 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,7 @@ int main(int argc, char **argv)
 		i++;
 		t_list *new_elem = ft_lstnew(argv[i]);
 		if (!new_elem)
-		{
-			while (lst)
-			{
-				current = lst;
-				lst = lst->next;
-				free(current);
-			}
 			return (1);
-		}
-
 		if (lst == NULL)
 		{
 			lst = new_elem;

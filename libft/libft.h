@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 18:26:37 by davli             #+#    #+#             */
-/*   Updated: 2024/05/22 20:20:27 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/24 16:04:22 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <string.h>
 # include <stdio.h>
 # include <stdint.h>
+# include <limits.h>
+# include <ctype.h>
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);

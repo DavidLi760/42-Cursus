@@ -1,26 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/24 15:28:50 by davli             #+#    #+#             */
+/*   Updated: 2024/05/24 16:10:22 by davli            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-{
-	t_list	*ret;
-	t_list	*tmp;
-
-	if (!lst || !f)
-		return (NULL);
-	ret = NULL;
-	while (lst)
-	{
-		tmp = ft_lstnew((*f)(lst -> content));
-		if (!tmp)
-		{
-			ft_lstclear(&ret, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&ret, tmp);
-		lst = lst -> next;
-	}
-	return (ret);
-}
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -41,28 +31,40 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (start);
 }
-
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+/*
+void	*transform_string(void *content)
 {
-	t_list	*new_lst;
-	t_list	*node;
-	void	*mapped_content;
+	char *str = content;
+	char *modified_str = malloc(strlen(str) + strlen("-modified") + 1);
+	strcpy(modified_str, str);
+	strcat(modified_str, "-modified");
+	return modified_str;
+}
 
-	if (!lst || !f || !del)
-		return (NULL);
-	new_lst = NULL;
+void print_string_list(t_list *lst)
+{
 	while (lst)
 	{
-		mapped_content = f(lst->content);
-		node = ft_lstnew(mapped_content);
-		if (!node)
-		{
-			del(mapped_content);
-			ft_lstclear(&new_lst, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new_lst, node);
+		printf("%s -> ", (char *)lst->content);
 		lst = lst->next;
 	}
-	return (new_lst);
+	printf("NULL\n");
 }
+
+int main()
+{
+	t_list *lst = ft_lstnew(strdup("Hello"));
+	lst->next = ft_lstnew(strdup("world"));
+
+	print_string_list(lst);
+
+	t_list *transformed_lst = ft_lstmap(lst, &transform_string, &free);
+
+	print_string_list(transformed_lst);
+
+	ft_lstclear(&lst, &free);
+	ft_lstclear(&transformed_lst, &free);
+
+	return 0;
+}
+*/

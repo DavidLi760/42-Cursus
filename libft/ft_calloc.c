@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:07:38 by davli             #+#    #+#             */
-/*   Updated: 2024/05/22 20:55:27 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/24 14:24:46 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*mem;
 
+	if (nmemb > SIZE_MAX / size)
+		return (NULL);
 	mem = malloc(nmemb * size);
 	if (!mem)
 		return (NULL);
@@ -27,6 +29,8 @@ int main()
 {
 	int	i = 0;
 	int *array = ft_calloc(2, 3);
+	if (!array)
+		return (1);
 	while (i < 6)
 		printf("%d\n", array[i++]);
 	free(array); 
