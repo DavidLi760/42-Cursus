@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 18:02:37 by davli             #+#    #+#             */
-/*   Updated: 2024/05/20 19:36:39 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/24 18:42:13 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	make_tab(char **tab, char const *s, char c)
 			j++;
 		if (j > 0)
 		{
-			tab[k] = malloc(sizeof(char) * j + 1);
+			tab[k] = malloc(sizeof(char) * (j + 1));
 			if (!tab[k])
 				return ;
 			fill_tab(tab[k], (s + i), c);
@@ -75,7 +75,7 @@ static void	make_tab(char **tab, char const *s, char c)
 		else
 			i++;
 	}
-	tab[k] = 0;
+	tab[k] = NULL;
 }
 
 char	**ft_split(char const *s, char c)
