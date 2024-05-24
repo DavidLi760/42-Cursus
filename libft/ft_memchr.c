@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:49:02 by davli             #+#    #+#             */
-/*   Updated: 2024/05/22 19:58:22 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/24 18:14:05 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 		if (str[i++] == (unsigned char)c)
-			return (str + i);
+			return (str + i - 1);
 	return (NULL);
 }
 /*

@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:40:01 by davli             #+#    #+#             */
-/*   Updated: 2024/05/20 17:44:11 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/24 18:26:58 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	str = malloc(sizeof(len1 + len2) + 1);
+	str = malloc((len1 + len2) + 1);
 	if (!str)
 		return (NULL);
 	ft_memcpy(str, s1, len1);
