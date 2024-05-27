@@ -1,35 +1,33 @@
-SRCS =	ft_printf.c \
-	ft_putadress.c \
-	ft_putchar.c \
-	ft_puthexa_lower.c \
-	ft_puthexa_upper.c \
-	ft_putnbr.c \
-	ft_putstr.c \
-	ft_putunbr.c \
-	ft_strlen.c
+SRCS	=	ft_printf.c \
+		ft_putadress.c \
+		ft_putchar.c \
+		ft_puthexa_lower.c \
+		ft_puthexa_upper.c \
+		ft_putnbr.c \
+		ft_putstr.c \
+		ft_putunbr.c \
+		ft_strlen.c
 
-OBJS = ${SRCS:.c=.o}
+OBJS	= ${SRCS:.c=.o}
 
-NAME = libftprintf.a
+NAME	= libftprintf.a
 
-CC = gcc
+CC	= gcc
 
-CFLAGS = -Wall -Werror -Wextra -I ./
+FLAGS	= -Wall -Wextra -Werror
 
 .c.o:
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
-		ar -rsc ${NAME} ${OBJS}
+		ar -rcs ${NAME} ${OBJS}
 
-all: 	${NAME}
+all:	${NAME}
 
-clean:	
+clean:
 		rm -f ${OBJS}
-
-fclean:	clean;
+fclean: clean
 		rm -f ${NAME}
-
 re:	fclean all
 
 .PHONY: all clean fclean re
