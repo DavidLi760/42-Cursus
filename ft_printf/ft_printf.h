@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 11:15:04 by davli             #+#    #+#             */
-/*   Updated: 2024/05/27 11:20:02 by davli            ###   ########.fr       */
+/*   Created: 2024/05/27 11:39:39 by davli             #+#    #+#             */
+/*   Updated: 2024/05/27 19:37:20 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <string.h>
-# include <stdlib.h>
 # include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 int		ft_printf(const char *str, ...);
-
-size_t	ft_putadress(void *adress);
 size_t	ft_putchar(const char c);
-size_t	ft_puthexa_lower(const unsigned int n);
-size_t	ft_puthexa_upper(const unsigned int n);
-size_t	ft_putnbr(const int n);
 size_t	ft_putstr(const char *str);
-size_t	ft_putunbr(const unsigned int n);
-size_t	ft_strlen(const char *s);
+size_t	ft_printmem(void *adress);
+size_t	ft_putnbr(int n);
+size_t	ft_putunsigned(unsigned int n);
+size_t	ft_puthex_lower(unsigned int n);
+size_t	ft_puthex_upper(unsigned int n);
 
 #endif

@@ -5,31 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 11:17:30 by davli             #+#    #+#             */
-/*   Updated: 2024/05/27 11:17:57 by davli            ###   ########.fr       */
+/*   Created: 2024/05/27 18:21:04 by davli             #+#    #+#             */
+/*   Updated: 2024/05/27 19:54:31 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	print_nb(long nb)
-{
-	if (nb / 10)
-		return (print_nb(nb / 10) + print_nb(nb % 10));
-	else
-		return (ft_putchar(nb + '0'));
-}
-
-size_t	ft_putnbr(const int n)
+static void	real_putnbr(int n)
 {
 	long	nb;
 
-	nb = n;
-	if (nb < 0)
-	{
+	nb = (long)n;
+	if (n < 0)
+	{	
 		nb = -nb;
-		return (ft_putchar('-') + print_nb(nb));
+		ft_putchar('-');
 	}
-	else
-		return (print_nb(nb));
+	if (nb >= 10)
+		real_putnbr(nb / 10);
+	ft_putchar(nb % 10 + '0');
+}
+
+size_t	ft_putnbr(int n)
+{
+	size_t	i;
+	long	nb;
+
+	i = 0;
+	nb = (long)n;
+	if (n <= 0)
+		i++;
+	while (nb)
+	{
+		i++;
+		nb /= 10;
+	}
+	real_putnbr(n);
+	return (i);
 }

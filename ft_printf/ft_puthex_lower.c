@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   ft_puthex_lower.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 11:19:25 by davli             #+#    #+#             */
-/*   Updated: 2024/05/27 11:19:26 by davli            ###   ########.fr       */
+/*   Created: 2024/05/27 19:01:47 by davli             #+#    #+#             */
+/*   Updated: 2024/05/27 19:18:47 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_putunbr(const unsigned int n)
+size_t	ft_puthex_lower(unsigned int n)
 {
-	if (n / 10)
-		return (ft_putunbr(n / 10) + ft_putunbr(n % 10));
+	if (n / 16)
+		return (ft_puthex_lower(n / 16) + ft_puthex_lower(n % 16));
+	else if (!(n / 10))
+		ft_putchar(n + '0');
 	else
-		return (ft_putchar(n + '0'));
+		ft_putchar(n - 10 + 'a');
+	return (1);
 }

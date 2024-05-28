@@ -1,12 +1,11 @@
 SRCS	=	ft_printf.c \
-		ft_putadress.c \
-		ft_putchar.c \
-		ft_puthexa_lower.c \
-		ft_puthexa_upper.c \
-		ft_putnbr.c \
-		ft_putstr.c \
-		ft_putunbr.c \
-		ft_strlen.c
+			ft_printmem.c \
+			ft_putchar.c \
+			ft_puthex_lower.c \
+			ft_puthex_upper.c \
+			ft_putnbr.c \
+			ft_putstr.c \
+			ft_putunsigned.c
 
 OBJS	= ${SRCS:.c=.o}
 

@@ -5,37 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 11:14:59 by davli             #+#    #+#             */
-/*   Updated: 2024/05/27 11:25:07 by davli            ###   ########.fr       */
+/*   Created: 2024/05/27 11:28:23 by davli             #+#    #+#             */
+/*   Updated: 2024/05/27 20:02:13 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	conversion(const char *c, size_t *i, va_list *ap)
+static size_t	str_format(const char *str, size_t *i, va_list *ap)
 {
 	*i = *i + 1;
-	if (*(c + 1) == 'c')
-		return (ft_putchar((char) va_arg(*ap, int)));
-	else if (*(c + 1) == 's')
+	if (str[*i] == 'c')
+		return (ft_putchar(va_arg(*ap, int)));
+	else if (str[*i] == 's')
 		return (ft_putstr(va_arg(*ap, const char *)));
-	else if (*(c + 1) == 'p')
-		return (ft_putadress(va_arg(*ap, void *)));
-	else if (*(c + 1) == 'd' || *(c + 1) == 'i')
+	else if (str[*i] == 'p')
+		return (ft_printmem(va_arg(*ap, void *)));
+	else if (str[*i] == 'd' || str[*i] == 'i')
 		return (ft_putnbr(va_arg(*ap, int)));
-	else if (*(c + 1) == 'u')
-		return (ft_putunbr(va_arg(*ap, unsigned int)));
-	else if (*(c + 1) == 'x')
-		return (ft_puthexa_lower(va_arg(*ap, int)));
-	else if (*(c + 1) == 'X')
-		return (ft_puthexa_upper(va_arg(*ap, int)));
-	else if (*(c + 1) == '%')
+	else if (str[*i] == 'u')
+		return (ft_putunsigned(va_arg(*ap, unsigned int)));
+	else if (str[*i] == 'x')
+		return (ft_puthex_lower(va_arg(*ap, unsigned int)));
+	else if (str[*i] == 'X')
+		return (ft_puthex_upper(va_arg(*ap, unsigned int)));
+	else if (str[*i] == '%')
 		return (ft_putchar('%'));
-	else if (*(c + 1) && *(c + 2))
-		return (ft_putchar(*(c)) + ft_putchar(*(c + 1)));
 	else
 	{
-		*i -= 1;
+		*i = *i - 1;
 		return (-1);
 	}
 }
@@ -43,27 +41,37 @@ static size_t	conversion(const char *c, size_t *i, va_list *ap)
 int	ft_printf(const char *str, ...)
 {
 	int		len;
-	int		tmp;
+	int		stock;
 	va_list	ap;
 	size_t	i;
 
 	if (!str)
 		return (-1);
-	len = 0;
 	va_start(ap, str);
+	len = 0;
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] == '%')
-			tmp = conversion(str + i, &i, &ap);
+			stock = str_format(str, &i, &ap);
 		else
-			tmp = ft_putchar(str[i]);
-		if (tmp >= 0)
-			len += tmp;
+			stock = ft_putchar(str[i]);
+		if (stock >= 0)
+			len += stock;
 		else
-			len = tmp;
+			len = stock;
 		i++;
 	}
 	va_end(ap);
 	return (len);
 }
+/*
+int	main()
+{
+//	int	lol = 0;
+
+	printf("%d\n", printf("NULL %s NULL", NULL));
+	ft_printf("%d\n", ft_printf("NULL %s NULL", NULL));
+	return (0);
+}
+*/

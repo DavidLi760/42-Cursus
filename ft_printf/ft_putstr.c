@@ -5,17 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 11:18:41 by davli             #+#    #+#             */
-/*   Updated: 2024/05/27 11:18:42 by davli            ###   ########.fr       */
+/*   Created: 2024/05/27 15:38:03 by davli             #+#    #+#             */
+/*   Updated: 2024/05/28 10:53:04 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_printf.h"
 
-size_t	ft_putstr(const char *str)
+size_t	ft_putstr(char const *str)
 {
+	size_t	i;
+
+	i = 0;
 	if (!str)
 		return (write(1, "(null)", 6));
-	else
-		return (write(1, str, ft_strlen(str)));
+	while (str[i])
+		write(1, &str[i++], 1);
+	return (i);
 }
