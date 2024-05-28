@@ -6,123 +6,95 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:13:26 by davli             #+#    #+#             */
-/*   Updated: 2024/05/28 13:47:02 by davli            ###   ########.fr       */
+/*   Updated: 2024/05/28 15:50:46 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
 #include "get_next_line.h"
 
-char	*get_before_newline(const char *s)
+char	*ft_free(char **str)
 {
-	char	*res;
-	int		i;
+	free(*str);
+	*str = NULL;
+	return (NULL);
+}
 
-	i = 0;
-	while (s[i] != '\0' && s[i] != '\n')
-		i++;
-	if (s[i] != '\0' && s[i] == '\n')
-		i++;
-	res = ft_malloc_zero(i + 1, sizeof * res);
-	if (!res)
+char	*clean_storage(char *storage)
+{
+	char	*new_storage;
+	char	*ptr;
+	int		len;
+
+	ptr = ft_strchr(storage, '\n');
+	if (!ptr)
+	{
+		new_storage = NULL;
+		return (ft_free(&storage));
+	}
+	else
+		len = (ptr - storage) + 1;
+	if (!storage[len])
+		return (ft_free(&storage));
+	new_storage = ft_substr(storage, len, ft_strlen(storage) - len);
+	ft_free(&storage);
+	if (!new_storage)
 		return (NULL);
-	i = 0;
-	while (s[i] != '\0' && s[i] != '\n')
-	{
-		res[i] = s[i];
-		i++;
-	}
-	if (s[i] == '\n')
-	{
-		res[i] = s[i];
-		i++;
-	}
-	return (res);
+	return (new_storage);
 }
 
-char	*get_after_newline(const char *s)
-{
-	char	*res;
-	int		i;
-	int		j;
-
-	j = 0;
-	while (s && s[j])
-		j++;
-	i = 0;
-	while (s[i] != '\0' && s[i] != '\n')
-		i++;
-	if (s[i] != '\0' && s[i] == '\n')
-		i++;
-	res = ft_malloc_zero((j - i) + 1, sizeof * res);
-	if (!res)
-		return (NULL);
-	j = 0;
-	while (s[i + j])
-	{
-		res[j] = s[i + j];
-		j++;
-	}
-	return (res);
-}
-
-void	ft_read_line(int fd, char **keep, char **tmp)
-{
-	char	*buf;
-	int		r;
-
-	buf = malloc(sizeof * buf * (BUFFER_SIZE + 1));
-	if (!buf)
-		return ;
-	r = 1;
-	while (r > 0)
-	{
-		r = read(fd, buf, BUFFER_SIZE);
-		if (r == -1)
-		{
-			ft_free_strs(&buf, keep, tmp);
-			return ;
-		}
-		buf[r] = '\0';
-		*tmp = ft_strdup(*keep);
-		ft_free_strs(keep, 0, 0);
-		*keep = join_strs(*tmp, buf);
-		ft_free_strs(tmp, 0, 0);
-		if (contains_newline(*keep))
-			break ;
-	}
-	ft_free_strs(&buf, 0, 0);
-}
-
-char	*ft_parse_line(char **keep, char **tmp)
+char	*new_line(char *storage)
 {
 	char	*line;
+	char	*ptr;
+	int		len;
 
-	*tmp = ft_strdup(*keep);
-	ft_free_strs(keep, 0, 0);
-	*keep = get_after_newline(*tmp);
-	line = get_before_newline(*tmp);
-	ft_free_strs(tmp, 0, 0);
+	ptr = ft_strchr(storage, '\n');
+	len = (ptr - storage) + 1;
+	line = ft_substr(storage, 0, len);
+	if (!line)
+		return (NULL);
 	return (line);
+}
+
+char	*readbuf(int fd, char *storage)
+{
+	int		rid;
+	char	*buffer;
+
+	rid = 1;
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (ft_free(&storage));
+	buffer[0] = '\0';
+	while (rid > 0 && !ft_strchr(buffer, '\n'))
+	{
+		rid = read (fd, buffer, BUFFER_SIZE);
+		if (rid > 0)
+		{
+			buffer[rid] = '\0';
+			storage = ft_strjoin(storage, buffer);
+		}
+	}
+	free(buffer);
+	if (rid == -1)
+		return (ft_free(&storage));
+	return (storage);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*keep = NULL;
-	char		*tmp;
+	static char	*storage = {0};
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0)
 		return (NULL);
-	line = NULL;
-	tmp = NULL;
-	ft_read_line(fd, &keep, &tmp);
-	if (keep != NULL && *keep != '\0')
-		line = ft_parse_line(&keep, &tmp);
-	if (!line || *line == '\0')
-	{
-		ft_free_strs(&keep, &line, &tmp);
+	if ((storage && !ft_strchr(storage, '\n')) || !storage)
+		storage = readbuf (fd, storage);
+	if (!storage)
 		return (NULL);
-	}
+	line = new_line(storage);
+	if (!line)
+		return (ft_free(&storage));
+	storage = clean_storage(storage);
 	return (line);
 }
