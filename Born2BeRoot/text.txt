@@ -1,0 +1,81 @@
+HOW A VIRTUAL MACHINE WORKS ?
+Une machine virtuelle émule un système informatique physique, permettant l'exécution de plusieurs systèmes et applications sur une seule machine réelle. Son but : optimiser les ressources, faciliter la gestion et améliorer la sécurité.
+
+THE BASIC DIFFERENCES BETWEEN ROCKY AND DEBIAN ?
+Rocky(ou Rock Linux) est le successeur de CentOS, et est plutot destine pour les entreprises avec un support a long terme alors que Debian est une distribution communautaire et stable, privilegie les logiciels libres et propose une vaste selection de paquets de logiciels, en plus d'etre plus simple d'utilisation.
+
+DIFFERENCE BETWEEN Apt AND Aptitude ?
+La principale difference est que Apt est plus simple d'utilisation et permet de rechercher, installer, mettre a jour et supprimer des package tools.
+Aptitude quand a lui est une interface utilisateur graphique pour APT, il offre des fonctionnalites plus avance comme la gestion des taches ou visualisation des informations.
+
+WHAT IS AppArmor ?
+C'est un logiciel de securite developpe pour Linux, notamment sur Debian et Ubuntu, il limite les capacite des programmes individuels pour reduire les dommages potentiels qu'ils peuvent causee aux vulnerabilites.
+
+WHAT IS LVM ?
+LVM est un gestionnaire de volumes logiques pour Linux, il gere de maniere flexible l'espace de stockage en regroupant des disques physiques et partitions ou systemes de fichiers.
+
+WHAT IS VALUE AND OPERATION OF SUDO ?
+Sudo permet a un utilisateur d'acceder aux droits du root, il donne le role de super utilisateur mais de maniere controle contrairement a un root simple qui donnerait trop de liberte.
+
+WHAT IS UFW ?
+UFW (Uncomplicated Fire Wall) c'est un pare-feu Linux qui autorise ou bloque le trafic reseau entrant et sortant sur de regle simple, d'OU SON NOM !
+
+WHAT IS USE OF SSH ?
+SSH (Secure Shell) permet une connexion securise entre 2 ordinateurs, acceder des fichiers a distance et transferer. Un peu comme sur Github stv.
+
+WHAT IS CRON ?
+C'est un utilitaire de type Unix, Il est utilise pour executer automatiquement des taches planifie a des moments specifies. C'est un macro en quelque sorte !
+
+Password policy	:	sudo chage -l username
+
+Check UFW 	:	sudo ufw status
+
+Check SSH	:	sudo systemctl status ssh
+
+Check OS used	:	cat /etc/os-release
+
+
+Check user/group:	getent group sudo/user42
+
+Create user	:	sudo adduser new_username
+
+Create group	:	sudo groupadd evaluating
+
+Assign user to group:	sudo usermod -aG evaluating new_username
+
+Delete user	:	sudo userdel new_username
+
+Delete group	:	sudo groupdel new_username
+
+
+Check hostname	:	hostnamectl (hostname control)
+
+Modify hostname	:	sudo hostnamectl set-hostname new_hostname
+
+Check partitions:	lsblk
+
+
+Check Sudo installed:	sudo apt-get install sudo
+
+Check sudo implement:	sudo visudo
+
+Go to sudo.log	:	cd /var/log/sudo vim sudo.log
+
+
+Check UFW working:	sudo ufw status numbered
+
+Add UFW Port	:	sudo ufw allow 8080
+
+Delete UFW Port	:	sudo ufw delete [number]
+
+
+Check SSH service:	sudo service ssh status
+
+Log in with SSH	:	ssh new_user@127.0.0.1 -p 4760
+
+
+Monitoring.sh	:	cd /usr/local/bin
+
+Check Crontab Time:	sudo crontab -u root -e
+
+Start/Stop Crontab:	sudo service cron stop/start/status
