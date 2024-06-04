@@ -3,41 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   input_check_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 13:25:28 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/04/25 17:15:03 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/06/03 11:32:46 by davli             #+#    #+#             */
+/*   Updated: 2024/06/03 11:32:57 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* is_digit:
-*   Checks if the character is a digit.
-*   Return: 1 if the character is a digit, 0 if not.
-*/
 int	is_digit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-/* is_sign:
-*   Checks if the character is number sign, + or -.
-*   Return: 1 if the character is a sign, 0 if not.
-*/
 int	is_sign(char c)
 {
 	return (c == '+' || c == '-');
 }
 
-/* nbstr_cmp:
-*   Compares two strings of digits to check if they are the same or not.
-*   If one of the strings starts with a '+' sign, it is ignored and the rest
-*   of the number string is checked.
-*   This is so that +123 == 123 but -123 != 123.
-*   Return: 0 if the strings match, another value if they do not.
-*/
-int	nbstr_cmp(const char *s1, const char *s2)
+int	nbr_cmp(const char *s1, const char *s2)
 {
 	int	i;
 	int	j;

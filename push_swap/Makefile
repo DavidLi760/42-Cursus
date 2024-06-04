@@ -25,7 +25,7 @@ CFLAGS = -Wall -Werror -Wextra
 all: ${NAME}
 
 $(NAME): ${OBJS}
-	${CC} ${CFLAGS} -I push_swap.h ${OBJS} -o $(NAME)
+	${CC} ${CFLAGS} ${OBJS} -o $(NAME)
 
 clean:
 	rm -rf ${OBJS}

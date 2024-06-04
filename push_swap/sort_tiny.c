@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_tiny.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/03 11:33:45 by davli             #+#    #+#             */
+/*   Updated: 2024/06/03 11:33:45 by davli            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static int	find_highest_index(t_stack *stack)
+static int	highest_i(t_stack *stack)
 {
 	int		index;
 
@@ -18,13 +30,13 @@ void	tiny_sort(t_stack **stack)
 {
 	int		highest;
 
-	if (is_sorted(*stack))
+	if (ft_is_sorted(*stack))
 		return ;
-	highest = find_highest_index(*stack);
+	highest = highest_i(*stack);
 	if ((*stack)->index == highest)
-		do_ra(stack);
+		rotate_a(stack);
 	else if ((*stack)->next->index == highest)
-		do_rra(stack);
+		reverse_rotate_a(stack);
 	if ((*stack)->index > (*stack)->next->index)
 		do_sa(stack);
 }

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/03 11:33:39 by davli             #+#    #+#             */
+/*   Updated: 2024/06/03 11:33:40 by davli            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void	rev_rotate(t_stack **stack)
+static void	reverse_rotate(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*tail;
@@ -14,21 +26,21 @@ static void	rev_rotate(t_stack **stack)
 	before_tail->next = NULL;
 }
 
-void	do_rra(t_stack **stack_a)
+void	reverse_rotate_a(t_stack **stack_a)
 {
-	rev_rotate(stack_a);
+	reverse_rotate(stack_a);
 	ft_putstr("rra\n");
 }
 
-void	do_rrb(t_stack **stack_b)
+void	reverse_rotate_b(t_stack **stack_b)
 {
-	rev_rotate(stack_b);
+	reverse_rotate(stack_b);
 	ft_putstr("rrb\n");
 }
 
-void	do_rrr(t_stack **stack_a, t_stack **stack_b)
+void	reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b)
 {
-	rev_rotate(stack_a);
-	rev_rotate(stack_b);
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
 	ft_putstr("rrr\n");
 }

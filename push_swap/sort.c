@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/03 11:33:14 by davli             #+#    #+#             */
+/*   Updated: 2024/06/03 11:33:15 by davli            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	push_all_save_three(t_stack **stack_a, t_stack **stack_b)
@@ -13,16 +25,16 @@ static void	push_all_save_three(t_stack **stack_a, t_stack **stack_b)
 	{
 		if ((*stack_a)->index <= stack_size / 2)
 		{
-			do_pb(stack_a, stack_b);
+			push_b(stack_a, stack_b);
 			pushed++;
 		}
 		else
-			do_ra(stack_a);
+			rotate_a(stack_a);
 		i++;
 	}
 	while (stack_size - pushed > 3)
 	{
-		do_pb(stack_a, stack_b);
+		push_b(stack_a, stack_b);
 		pushed++;
 	}
 }
@@ -38,7 +50,7 @@ static void	shift_stack(t_stack **stack_a)
 	{
 		while (lowest_pos < stack_size)
 		{
-			do_rra(stack_a);
+			reverse_rotate_a(stack_a);
 			lowest_pos++;
 		}
 	}
@@ -46,7 +58,7 @@ static void	shift_stack(t_stack **stack_a)
 	{
 		while (lowest_pos > 0)
 		{
-			do_ra(stack_a);
+			rotate_a(stack_a);
 			lowest_pos--;
 		}
 	}
@@ -62,6 +74,6 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 		get_cost(stack_a, stack_b);
 		do_cheapest_move(stack_a, stack_b);
 	}
-	if (!is_sorted(*stack_a))
+	if (!ft_is_sorted(*stack_a))
 		shift_stack(stack_a);
 }

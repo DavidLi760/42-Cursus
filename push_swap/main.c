@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/03 11:33:27 by davli             #+#    #+#             */
+/*   Updated: 2024/06/03 11:33:28 by davli            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	is_sorted(t_stack *stack)
+int	ft_is_sorted(t_stack *stack)
 {
 	while (stack->next != NULL)
 	{
@@ -13,11 +25,11 @@ int	is_sorted(t_stack *stack)
 
 static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 {
-	if (stack_size == 2 && !is_sorted(*stack_a))
+	if (stack_size == 2 && !ft_is_sorted(*stack_a))
 		do_sa(stack_a);
 	else if (stack_size == 3)
 		tiny_sort(stack_a);
-	else if (stack_size > 3 && !is_sorted(*stack_a))
+	else if (stack_size > 3 && !ft_is_sorted(*stack_a))
 		sort(stack_a, stack_b);
 }
 
@@ -29,7 +41,7 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	if (!is_correct_input(av))
+	if (!ft_check_arg(av))
 		exit_error(NULL, NULL);
 	stack_b = NULL;
 	stack_a = fill_stack_values(ac, av);

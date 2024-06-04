@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/03 11:31:57 by davli             #+#    #+#             */
+/*   Updated: 2024/06/03 11:31:58 by davli            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -21,7 +33,7 @@ typedef struct s_stack
 t_stack		*fill_stack_values(int ac, char **av);
 void		assign_index(t_stack *stack_a, int ac);
 
-int			is_sorted(t_stack *stack);
+int			ft_is_sorted(t_stack *stack);
 void		tiny_sort(t_stack **stack);
 void		sort(t_stack **stack_a, t_stack **stack_b);
 
@@ -33,17 +45,17 @@ void		do_cheapest_move(t_stack **stack_a, t_stack **stack_b);
 
 void		do_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
 
-void		do_pa(t_stack **stack_a, t_stack **stack_b);
-void		do_pb(t_stack **stack_a, t_stack **stack_b);
+void		push_a(t_stack **stack_a, t_stack **stack_b);
+void		push_b(t_stack **stack_a, t_stack **stack_b);
 void		do_sa(t_stack **stack_a);
 void		do_sb(t_stack **stack_b);
 void		do_ss(t_stack **stack_a, t_stack **stack_b);
-void		do_ra(t_stack **stack_a);
-void		do_rb(t_stack **stack_b);
-void		do_rr(t_stack **stack_a, t_stack **stack_b);
-void		do_rrr(t_stack **stack_a, t_stack **stack_b);
-void		do_rra(t_stack **stack_a);
-void		do_rrb(t_stack **stack_b);
+void		rotate_a(t_stack **stack_a);
+void		rotate_b(t_stack **stack_b);
+void		rotate_ab(t_stack **stack_a, t_stack **stack_b);
+void		reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
+void		reverse_rotate_a(t_stack **stack_a);
+void		reverse_rotate_b(t_stack **stack_b);
 
 t_stack		*get_stack_bottom(t_stack *stack);
 t_stack		*get_stack_before_bottom(t_stack *stack);
@@ -58,9 +70,9 @@ int			nb_abs(int nb);
 
 void		exit_error(t_stack **stack_a, t_stack **stack_b);
 
-int			is_correct_input(char **av);
+int			ft_check_arg(char **av);
 int			is_digit(char c);
 int			is_sign(char c);
-int			nbstr_cmp(const char *s1, const char *s2);
+int			nbr_cmp(const char *s1, const char *s2);
 
 #endif
