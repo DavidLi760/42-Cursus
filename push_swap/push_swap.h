@@ -30,18 +30,18 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-t_stack		*fill_stack_values(int ac, char **av);
-void		assign_index(t_stack *stack_a, int ac);
+t_stack		*fill_stack(int ac, char **av);
+void		assign_stack(t_stack *stack_a, int ac);
 
 int			ft_is_sorted(t_stack *stack);
-void		tiny_sort(t_stack **stack);
+void		sort_3(t_stack **stack);
 void		sort(t_stack **stack_a, t_stack **stack_b);
 
-int			get_lowest_index_position(t_stack **stack);
+int			get_lowest(t_stack **stack);
 void		get_target_position(t_stack **stack_a, t_stack **stack_b);
 
 void		get_cost(t_stack **stack_a, t_stack **stack_b);
-void		do_cheapest_move(t_stack **stack_a, t_stack **stack_b);
+void		cheapest(t_stack **stack_a, t_stack **stack_b);
 
 void		do_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
 
@@ -57,16 +57,16 @@ void		reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 void		reverse_rotate_a(t_stack **stack_a);
 void		reverse_rotate_b(t_stack **stack_b);
 
-t_stack		*get_stack_bottom(t_stack *stack);
-t_stack		*get_stack_before_bottom(t_stack *stack);
-t_stack		*stack_new(int value);
-void		stack_add_bottom(t_stack **stack, t_stack *new);
+t_stack		*stack_bot(t_stack *stack);
+t_stack		*stack_before_bot(t_stack *stack);
+t_stack		*new_stack(int value);
+void		stack_add_bot(t_stack **stack, t_stack *new);
 int			get_stack_size(t_stack	*stack);
 
 void		free_stack(t_stack **stack);
 long int	ft_atoi(const char *str);
 void		ft_putstr(char *str);
-int			nb_abs(int nb);
+int			ft_abs(int nb);
 
 void		exit_error(t_stack **stack_a, t_stack **stack_b);
 

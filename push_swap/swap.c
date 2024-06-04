@@ -14,16 +14,16 @@
 
 static void	swap(t_stack *stack)
 {
-	int	tmp;
+	int	temp;
 
 	if (stack == NULL || stack->next == NULL)
 		return ;
-	tmp = stack->value;
+	temp = stack->value;
 	stack->value = stack->next->value;
-	stack->next->value = tmp;
-	tmp = stack->index;
+	stack->next->value = temp;
+	temp = stack->index;
 	stack->index = stack->next->index;
-	stack->next->index = tmp;
+	stack->next->index = temp;
 }
 
 void	do_sa(t_stack **stack_a)

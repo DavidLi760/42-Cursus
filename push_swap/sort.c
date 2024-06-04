@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	push_all_save_three(t_stack **stack_a, t_stack **stack_b)
+static void	push_except3(t_stack **stack_a, t_stack **stack_b)
 {
 	int	stack_size;
 	int	pushed;
@@ -45,7 +45,7 @@ static void	shift_stack(t_stack **stack_a)
 	int	stack_size;
 
 	stack_size = get_stack_size(*stack_a);
-	lowest_pos = get_lowest_index_position(stack_a);
+	lowest_pos = get_lowest(stack_a);
 	if (lowest_pos > stack_size / 2)
 	{
 		while (lowest_pos < stack_size)
@@ -66,13 +66,13 @@ static void	shift_stack(t_stack **stack_a)
 
 void	sort(t_stack **stack_a, t_stack **stack_b)
 {
-	push_all_save_three(stack_a, stack_b);
-	tiny_sort(stack_a);
+	push_except3(stack_a, stack_b);
+	sort_3(stack_a);
 	while (*stack_b)
 	{
 		get_target_position(stack_a, stack_b);
 		get_cost(stack_a, stack_b);
-		do_cheapest_move(stack_a, stack_b);
+		cheapest(stack_a, stack_b);
 	}
 	if (!ft_is_sorted(*stack_a))
 		shift_stack(stack_a);

@@ -14,14 +14,14 @@
 
 static void	rotate(t_stack **stack)
 {
-	t_stack	*tmp;
+	t_stack	*temp;
 	t_stack	*tail;
 
-	tmp = *stack;
+	temp = *stack;
 	*stack = (*stack)->next;
-	tail = get_stack_bottom(*stack);
-	tmp->next = NULL;
-	tail->next = tmp;
+	tail = stack_bot(*stack);
+	temp->next = NULL;
+	tail->next = temp;
 }
 
 void	rotate_a(t_stack **stack_a)

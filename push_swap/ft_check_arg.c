@@ -63,18 +63,18 @@ static int	ft_is_zero(char *av)
 int	ft_check_arg(char **av)
 {
 	int	i;
-	int	nb_zeros;
+	int	zero_count;
 
-	nb_zeros = 0;
+	zero_count = 0;
 	i = 1;
 	while (av[i])
 	{
 		if (!ft_is_number(av[i]))
 			return (0);
-		nb_zeros += ft_is_zero(av[i]);
+		zero_count += ft_is_zero(av[i]);
 		i++;
 	}
-	if (nb_zeros > 1)
+	if (zero_count > 1)
 		return (0);
 	if (ft_is_double(av))
 		return (0);

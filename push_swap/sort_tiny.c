@@ -26,7 +26,7 @@ static int	highest_i(t_stack *stack)
 	return (index);
 }
 
-void	tiny_sort(t_stack **stack)
+void	sort_3(t_stack **stack)
 {
 	int		highest;
 

@@ -14,14 +14,14 @@
 
 static void	push(t_stack **src, t_stack **dest)
 {
-	t_stack	*tmp;
+	t_stack	*temp;
 
 	if (*src == NULL)
 		return ;
-	tmp = (*src)->next;
+	temp = (*src)->next;
 	(*src)->next = *dest;
 	*dest = *src;
-	*src = tmp;
+	*src = temp;
 }
 
 void	push_a(t_stack **stack_a, t_stack **stack_b)

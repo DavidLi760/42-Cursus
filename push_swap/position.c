@@ -14,37 +14,37 @@
 
 static void	get_position(t_stack **stack)
 {
-	t_stack	*tmp;
+	t_stack	*temp;
 	int		i;
 
-	tmp = *stack;
+	temp = *stack;
 	i = 0;
-	while (tmp)
+	while (temp)
 	{
-		tmp->pos = i;
-		tmp = tmp->next;
+		temp->pos = i;
+		temp = temp->next;
 		i++;
 	}
 }
 
-int	get_lowest_index_position(t_stack **stack)
+int	get_lowest(t_stack **stack)
 {
-	t_stack	*tmp;
+	t_stack	*temp;
 	int		lowest_index;
 	int		lowest_pos;
 
-	tmp = *stack;
+	temp = *stack;
 	lowest_index = INT_MAX;
 	get_position(stack);
-	lowest_pos = tmp->pos;
-	while (tmp)
+	lowest_pos = temp->pos;
+	while (temp)
 	{
-		if (tmp->index < lowest_index)
+		if (temp->index < lowest_index)
 		{
-			lowest_index = tmp->index;
-			lowest_pos = tmp->pos;
+			lowest_index = temp->index;
+			lowest_pos = temp->pos;
 		}
-		tmp = tmp->next;
+		temp = temp->next;
 	}
 	return (lowest_pos);
 }
@@ -52,46 +52,46 @@ int	get_lowest_index_position(t_stack **stack)
 static int	get_target(t_stack **a, int b_idx,
 								int target_idx, int target_pos)
 {
-	t_stack	*tmp_a;
+	t_stack	*temp_a;
 
-	tmp_a = *a;
-	while (tmp_a)
+	temp_a = *a;
+	while (temp_a)
 	{
-		if (tmp_a->index > b_idx && tmp_a->index < target_idx)
+		if (temp_a->index > b_idx && temp_a->index < target_idx)
 		{
-			target_idx = tmp_a->index;
-			target_pos = tmp_a->pos;
+			target_idx = temp_a->index;
+			target_pos = temp_a->pos;
 		}
-		tmp_a = tmp_a->next;
+		temp_a = temp_a->next;
 	}
 	if (target_idx != INT_MAX)
 		return (target_pos);
-	tmp_a = *a;
-	while (tmp_a)
+	temp_a = *a;
+	while (temp_a)
 	{
-		if (tmp_a->index < target_idx)
+		if (temp_a->index < target_idx)
 		{
-			target_idx = tmp_a->index;
-			target_pos = tmp_a->pos;
+			target_idx = temp_a->index;
+			target_pos = temp_a->pos;
 		}
-		tmp_a = tmp_a->next;
+		temp_a = temp_a->next;
 	}
 	return (target_pos);
 }
 
 void	get_target_position(t_stack **a, t_stack **b)
 {
-	t_stack	*tmp_b;
+	t_stack	*temp_b;
 	int		target_pos;
 
-	tmp_b = *b;
+	temp_b = *b;
 	get_position(a);
 	get_position(b);
 	target_pos = 0;
-	while (tmp_b)
+	while (temp_b)
 	{
-		target_pos = get_target(a, tmp_b->index, INT_MAX, target_pos);
-		tmp_b->target_pos = target_pos;
-		tmp_b = tmp_b->next;
+		target_pos = get_target(a, temp_b->index, INT_MAX, target_pos);
+		temp_b->target_pos = target_pos;
+		temp_b = temp_b->next;
 	}
 }

@@ -14,15 +14,15 @@
 
 void	free_stack(t_stack **stack)
 {
-	t_stack	*tmp;
+	t_stack	*temp;
 
 	if (!stack || !(*stack))
 		return ;
 	while (*stack)
 	{
-		tmp = (*stack)->next;
+		temp = (*stack)->next;
 		free(*stack);
-		*stack = tmp;
+		*stack = temp;
 	}
 	*stack = NULL;
 }
@@ -73,7 +73,7 @@ void	ft_putstr(char *str)
 	}
 }
 
-int	nb_abs(int nb)
+int	ft_abs(int nb)
 {
 	if (nb < 0)
 		return (nb * -1);

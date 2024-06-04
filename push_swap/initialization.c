@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_stack	*fill_stack_values(int ac, char **av)
+t_stack	*fill_stack(int ac, char **av)
 {
 	t_stack		*stack_a;
 	long int	nb;
@@ -27,15 +27,15 @@ t_stack	*fill_stack_values(int ac, char **av)
 		if (nb > INT_MAX || nb < INT_MIN)
 			exit_error(&stack_a, NULL);
 		if (i == 1)
-			stack_a = stack_new((int)nb);
+			stack_a = new_stack((int)nb);
 		else
-			stack_add_bottom(&stack_a, stack_new((int)nb));
+			stack_add_bot(&stack_a, new_stack((int)nb));
 		i++;
 	}
 	return (stack_a);
 }
 
-void	assign_index(t_stack *stack_a, int stack_size)
+void	assign_stack(t_stack *stack_a, int stack_size)
 {
 	t_stack	*ptr;
 	t_stack	*highest;

@@ -12,21 +12,21 @@
 
 #include "push_swap.h"
 
-t_stack	*get_stack_bottom(t_stack *stack)
+t_stack	*stack_bot(t_stack *stack)
 {
 	while (stack && stack->next != NULL)
 		stack = stack->next;
 	return (stack);
 }
 
-t_stack	*get_stack_before_bottom(t_stack *stack)
+t_stack	*stack_before_bot(t_stack *stack)
 {
 	while (stack && stack->next && stack->next->next != NULL)
 		stack = stack->next;
 	return (stack);
 }
 
-t_stack	*stack_new(int value)
+t_stack	*new_stack(int value)
 {
 	t_stack	*new;
 
@@ -43,7 +43,7 @@ t_stack	*stack_new(int value)
 	return (new);
 }
 
-void	stack_add_bottom(t_stack **stack, t_stack *new)
+void	stack_add_bot(t_stack **stack, t_stack *new)
 {
 	t_stack	*tail;
 
@@ -54,7 +54,7 @@ void	stack_add_bottom(t_stack **stack, t_stack *new)
 		*stack = new;
 		return ;
 	}
-	tail = get_stack_bottom(*stack);
+	tail = stack_bot(*stack);
 	tail->next = new;
 }
 

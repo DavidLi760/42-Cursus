@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	do_reverse_rotate_both(t_stack **a, t_stack **b,
+static void	do_reverse_rotate_ab(t_stack **a, t_stack **b,
 												int *cost_a, int *cost_b)
 {
 	while (*cost_a < 0 && *cost_b < 0)
@@ -23,7 +23,7 @@ static void	do_reverse_rotate_both(t_stack **a, t_stack **b,
 	}
 }
 
-static void	do_rotate_both(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
+static void	do_rotate_ab(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
 {
 	while (*cost_a > 0 && *cost_b > 0)
 	{
@@ -70,9 +70,9 @@ static void	do_rotate_b(t_stack **b, int *cost)
 void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b)
 {
 	if (cost_a < 0 && cost_b < 0)
-		do_reverse_rotate_both(a, b, &cost_a, &cost_b);
+		do_reverse_rotate_ab(a, b, &cost_a, &cost_b);
 	else if (cost_a > 0 && cost_b > 0)
-		do_rotate_both(a, b, &cost_a, &cost_b);
+		do_rotate_ab(a, b, &cost_a, &cost_b);
 	do_rotate_a(a, &cost_a);
 	do_rotate_b(b, &cost_b);
 	push_a(a, b);

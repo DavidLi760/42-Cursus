@@ -28,7 +28,7 @@ static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 	if (stack_size == 2 && !ft_is_sorted(*stack_a))
 		do_sa(stack_a);
 	else if (stack_size == 3)
-		tiny_sort(stack_a);
+		sort_3(stack_a);
 	else if (stack_size > 3 && !ft_is_sorted(*stack_a))
 		sort(stack_a, stack_b);
 }
@@ -44,9 +44,9 @@ int	main(int ac, char **av)
 	if (!ft_check_arg(av))
 		exit_error(NULL, NULL);
 	stack_b = NULL;
-	stack_a = fill_stack_values(ac, av);
+	stack_a = fill_stack(ac, av);
 	stack_size = get_stack_size(stack_a);
-	assign_index(stack_a, stack_size + 1);
+	assign_stack(stack_a, stack_size + 1);
 	push_swap(&stack_a, &stack_b, stack_size);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

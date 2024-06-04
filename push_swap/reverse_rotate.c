@@ -14,15 +14,15 @@
 
 static void	reverse_rotate(t_stack **stack)
 {
-	t_stack	*tmp;
+	t_stack	*temp;
 	t_stack	*tail;
 	t_stack	*before_tail;
 
-	tail = get_stack_bottom(*stack);
-	before_tail = get_stack_before_bottom(*stack);
-	tmp = *stack;
+	tail = stack_bot(*stack);
+	before_tail = stack_before_bot(*stack);
+	temp = *stack;
 	*stack = tail;
-	(*stack)->next = tmp;
+	(*stack)->next = temp;
 	before_tail->next = NULL;
 }
 
