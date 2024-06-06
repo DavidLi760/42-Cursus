@@ -3,27 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 17:52:38 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 17:52:39 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/15 17:00:26 by davli             #+#    #+#             */
+/*   Updated: 2024/05/15 17:04:03 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 int	ft_isdigit(int c)
 {
-	return ('0' <= c && c <= '9');
+	if (c <= '9' && c >= '0')
+		return (1);
+	return (0);
 }
-/*int main()
-{
-	ft_putnbr_fd(ft_isdigit('5'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isdigit('4'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isdigit('a'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isdigit('\t'), 1);
-	ft_putchar_fd('\n', 1);
-}*/

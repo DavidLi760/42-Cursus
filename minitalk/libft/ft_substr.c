@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:14:49 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:14:51 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/20 17:26:18 by davli             #+#    #+#             */
+/*   Updated: 2024/05/24 19:27:50 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,28 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*subst;
-	size_t	size;
+	char			*str;
+	unsigned int	i;
 
-	if (!s)
-		return (NULL);
 	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
-	size = ft_strlen(s + start);
-	if (size < len)
-		len = size;
-	subst = (char *)malloc(sizeof(char) * (len + 1));
-	if (!subst)
+		len = 0;
+	else if (len > ft_strlen(s + start))
+		len = ft_strlen(s + start);
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
-	ft_strlcpy(subst, s + start, len + 1);
-	return (subst);
+	i = 0;
+	while (start + i < ft_strlen(s) && i < len)
+	{
+		str[i] = s[start + i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
-
-/*int	main()
+/*
+int	main()
 {
-	char	str[] = "Mais um pouco e era Sub-Zero!";
-	ft_putendl_fd(ft_substr(str, 20, 30), 1);
-}*/
+	printf("%s", ft_substr("Yo les gars", 3, 3));
+}
+*/

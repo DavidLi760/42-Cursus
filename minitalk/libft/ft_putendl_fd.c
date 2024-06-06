@@ -3,17 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:06:24 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:06:28 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/22 16:41:36 by davli             #+#    #+#             */
+/*   Updated: 2024/05/22 16:44:20 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	ft_putstr_fd(s, fd);
+	int	i;
+
+	i = 0;
+	while (s[i])
+		write(fd, &s[i++], 1);
 	write(fd, "\n", 1);
 }
+/*
+int	main(int argc, char **argv)
+{
+	if (argc < 1)
+                return (0);
+        int     fd;
+        fd = open(argv[2], O_RDWR);
+        ft_putendl_fd(argv[1], fd);
+        close(fd);
+}
+*/

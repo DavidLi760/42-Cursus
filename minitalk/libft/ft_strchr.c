@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:09:08 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:09:10 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/18 16:48:36 by davli             #+#    #+#             */
+/*   Updated: 2024/05/24 18:34:00 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*ptr;
+	size_t	i;
+	char	*s1;
 
-	ptr = (char *)s;
-	while (*ptr)
+	i = 0;
+	s1 = (char *)s;
+	while (1)
 	{
-		if (*ptr == (unsigned char)c)
-			return (ptr);
-		ptr++;
+		if (s1[i] == (char)c)
+			return ((char *)s1 + i);
+		else if (s1[i++] == 0)
+			break ;
 	}
-	if (c == 0)
-		return (ptr);
 	return (NULL);
 }
-
-/*int	main()
+/*
+int	main()
 {
-	char	str[] = "Eu vou encontrar um ponto . Ca esta ele!";
-	char	c = '.';
-	ft_putendl_fd(ft_strchr(str, c), 1);
-}*/
+	printf("%s\n", ft_strchr("Salut tout le monde", 't'));
+}
+*/

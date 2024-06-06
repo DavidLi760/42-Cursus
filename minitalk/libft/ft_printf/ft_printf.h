@@ -3,26 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/30 20:33:34 by jotavare          #+#    #+#             */
-/*   Updated: 2022/12/30 20:33:35 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/27 11:39:39 by davli             #+#    #+#             */
+/*   Updated: 2024/05/29 15:14:59 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <unistd.h>
 # include <stdarg.h>
-# include "../libft.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <limits.h>
 
-int		ft_printf(const char *format, ...);
-int		ft_putchar(char c);
-int		ft_putstr(char *str);
-int		ft_putnumb(int n);
-int		ft_putpointer(unsigned long long ptr);
-int		ft_putunsigned(unsigned int n);
-int		ft_puthexadecimal(unsigned int num, const char type);
+int		ft_printf(const char *str, ...);
+size_t	ft_putchar(const char c);
+size_t	ft_putstr(const char *str);
+size_t	ft_printmem(void *adress);
+size_t	ft_putnbr(int n);
+size_t	ft_putunsigned(unsigned int n);
+size_t	ft_puthex_lower(unsigned int n);
+size_t	ft_puthex_upper(unsigned int n);
 
 #endif

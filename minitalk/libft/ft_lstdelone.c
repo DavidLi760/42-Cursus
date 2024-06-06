@@ -3,19 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 17:54:24 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 17:54:29 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/24 14:50:37 by davli             #+#    #+#             */
+/*   Updated: 2024/05/24 15:54:40 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (lst == NULL || del == NULL)
+	if (!lst || !del)
 		return ;
-	(*del)(lst -> content);
+	del(lst->content);
 	free(lst);
 }
+/*
+int main()
+{
+	t_list  *elem = ft_lstnew("Hello tout le mondo1");
+	t_list  *elem2 = ft_lstnew(ft_strdup("Hello tout le mondo2"));
+	t_list  *elem3 = ft_lstnew("Hello tout le mondo3");
+	elem->next = elem2;
+	elem2->next = elem3;
+
+//	elem->next = elem2->next;
+//	ft_lstdelone(elem2, free);
+
+	t_list *current = elem;
+	while (current)
+	{
+		printf("%s\n", (char *)current->content);
+		current = current->next;
+	}
+}
+*/

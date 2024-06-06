@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:13:29 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:13:30 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/18 17:50:31 by davli             #+#    #+#             */
+/*   Updated: 2024/05/24 18:12:42 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,26 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*ptr1;
-	unsigned char	*ptr2;
+	size_t	i;
 
-	ptr1 = (unsigned char *)s1;
-	ptr2 = (unsigned char *)s2;
-	while (n && *ptr1 && *ptr1 == *ptr2)
-	{
-		++ptr1;
-		++ptr2;
-		--n;
-	}
-	if (n)
-		return (*ptr1 - *ptr2);
-	else
+	if (!n)
 		return (0);
+	i = 0;
+	while (*s1 == *s2 && i < n - 1 && *s1)
+	{
+		s1++;
+		s2++;
+		i++;
+	}
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
-
-/*int	main()
+/*
+int main(void)
 {
-	char	str[] = "Sera que sou grande?";
-	char	str1[] = "Ou sera que eu ainda sou maior?";
-	ft_putnbr_fd(ft_strncmp(str, str1, 5), 1);
-	ft_putchar_fd('\n', 1);
-}*/
+    char *str1 = "Hello, world!";
+    char *str2 = "Hello, 42!";
+    int result = ft_strncmp(str1, str2, 8);
+    printf("Comparison result: %d\n", result);
+    return 0;
+}
+*/

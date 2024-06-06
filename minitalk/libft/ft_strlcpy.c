@@ -3,35 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:12:56 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:12:57 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/17 17:53:35 by davli             #+#    #+#             */
+/*   Updated: 2024/05/22 19:08:56 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t siz)
 {
 	size_t	i;
 
-	if (!size)
-		return (ft_strlen(src));
 	i = 0;
-	while (src[i] && (i < size - 1))
+	while (siz != 0 && i < siz - 1 && src[i])
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = 0;
-	return (ft_strlen(src));
+	if (i < siz)
+		dest[i] = 0;
+	while (src[i])
+		i++;
+	return (i);
 }
+/*
+int main() {
+    char src[] = "123456789123456789!";
+    char dest[20];
 
-/*int	main()
-{
-	char	dest[] = "nem me vais ver!";
-	char	src[] = "nem a mim, mas vais saber o nosso tamanho!";
-	ft_putnbr_fd(ft_strlcpy(dest, src, 20), 1);
-	ft_putchar_fd('\n', 1);
-}*/
+    size_t len_copied = ft_strlcpy(dest, src, 20);
+
+	printf("Chaîne copiée : %s\n", dest);
+	printf("Nombre de caractères copiés : %zu\n", len_copied);
+	return (0);
+}
+*/

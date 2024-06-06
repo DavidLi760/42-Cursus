@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:13:48 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:13:50 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/20 16:51:22 by davli             #+#    #+#             */
+/*   Updated: 2024/05/22 20:01:33 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,31 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	n;
+	size_t	i;
+	size_t	j;
 
 	if (*little == 0)
-		return ((char *)big);
-	n = ft_strlen(little);
-	if (len == 0)
-		return (0);
-	while (*big && n <= len)
+		return ((char *)(big));
+	i = 0;
+	while (i < len && big[i])
 	{
-		if (*big == *little && ft_strncmp(big, little, n) == 0)
-			return ((char *)big);
-		++big;
-		--len;
+		j = 0;
+		while ((i + j) < len && little[j] == big[i + j])
+		{
+			j++;
+			if (little[j] == 0)
+				return ((char *)(big + i));
+		}
+		++i;
 	}
 	return (NULL);
 }
-
-/*int	main()
+/*
+int	main()
 {
-	char	str[] = "Indo eu, indo eu";
-	char	str1[] = "indo";
-	ft_putendl_fd(ft_strnstr(str, str1, ft_strlen(str)), 1);
-}*/
+	char	str1[] = "T'aime le chocolat noir? je prefere les blancs";
+	char	str2[] = "je";
+
+	printf("%s", ft_strnstr(str1, str2, 27));
+}
+*/

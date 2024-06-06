@@ -3,47 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:12:48 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:12:50 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/17 17:53:43 by davli             #+#    #+#             */
+/*   Updated: 2024/05/24 18:23:37 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dest, const char *src, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	char	*pt_src;
+	size_t	dstlen;
+	size_t	retlen;
 
-	pt_src = (char *)src;
-	i = 0;
-	while (i < size && *dst)
+	dstlen = 0;
+	while (dstlen < len && dest[dstlen])
+		dstlen++;
+	retlen = ft_strlen(src) + dstlen;
+	dest += dstlen;
+	if (len != dstlen)
 	{
-		dst++;
-		i++;
+		while (*src)
+		{
+			if (len - 1 > dstlen)
+			{
+				*dest++ = *src;
+				len--;
+			}
+			src++;
+		}
+		*dest = 0;
 	}
-	if (i == size)
-		return (i + ft_strlen(src));
-	j = 0;
-	while (pt_src[j])
-	{
-		if (j < size - i - 1)
-			*dst++ = pt_src[j];
-		j++;
-	}
-	*dst = 0;
-	return (j + i);
+	return (retlen);
 }
-
-/*int	main()
+/*
+int main() 
 {
-	char	dest[40] = "nem me vais ver!";
-	char	src[] = "nem a mim, mas vais saber o nosso tamanho!";
-	ft_putnbr_fd(ft_strlcat(dest, src, 15), 1);
-	ft_putchar_fd('\n', 1);
-	printf("%s", dest);
-}*/
+    char dest[20] = "Hello ";
+    char src[] = "World!";
+
+    size_t total_len = ft_strlcat(dest, src, 13);
+
+    printf("Chaîne résultante : %s\n", dest);
+    printf("Longueur totale : %zu\n", total_len);
+
+    return 0;
+}
+*/

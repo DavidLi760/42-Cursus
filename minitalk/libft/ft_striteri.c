@@ -3,36 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:09:29 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:09:32 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/21 19:50:54 by davli             #+#    #+#             */
+/*   Updated: 2024/05/24 14:43:49 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	unsigned int	i;
 
-	i = 0;
 	if (!s)
 		return ;
+	i = 0;
 	while (s[i])
 	{
-		(*f)(i, (s + i));
+		f(i, &s[i]);
 		++i;
 	}
 }
-
-/*void	ft_test(unsigned int i, char *str)
-	{
-		*str += i;
-	}
-int	main()
+/*
+void to_uppercase(unsigned int i, char *c)
 {
-	char	str[] = "aBcDeF";
-	ft_striteri(str, ft_test);
-	ft_putendl_fd(str, 1);
-}*/
+    (void)i;
+    if (*c >= 'a' && *c <= 'z')
+    {
+        *c = *c - ('a' - 'A');
+    }
+}
+
+int main()
+{
+    char str[] = "hello world!";
+
+    printf("Original string: %s\n", str);
+    ft_striteri(str, to_uppercase);
+    printf("Modified string: %s\n", str);
+
+    return 0;
+}
+*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:02:25 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:02:28 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/20 16:49:02 by davli             #+#    #+#             */
+/*   Updated: 2024/05/24 18:14:05 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,28 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*ptr;
+	unsigned char	*str;
+	size_t			i;
 
-	ptr = (unsigned char *)s;
-	c = (unsigned char)c;
-	while (n && *ptr != c)
-	{
-		++ptr;
-		--n;
-	}
-	if (n)
-		return ((void *)ptr);
-	else
-		return (NULL);
+	str = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+		if (str[i++] == (unsigned char)c)
+			return (str + i - 1);
+	return (NULL);
 }
-
-/*int	main()
+/*
+int main(void)
 {
-	char str[] = "Quando encontrares . segue!";
-	char c = 'e';
-	ft_putstr_fd(ft_memchr(str, c, ft_strlen(str)), 1);
-	ft_putchar_fd('\n', 1);
-}*/
+    const char str[] = "Hello, world!";
+    int c = 'o';
+    char *result = ft_memchr(str, c, 5);
+
+    if (result)
+        printf("Character '%c' found at position: %ld\n", c, result - str);
+    else
+        printf("Character '%c' not found.\n", c);
+
+    return 0;
+}
+*/

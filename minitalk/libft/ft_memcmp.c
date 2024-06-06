@@ -3,37 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:02:35 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:02:37 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/20 16:50:27 by davli             #+#    #+#             */
+/*   Updated: 2024/05/20 16:51:10 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(void *dest, const void *src, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char	*d;
-	unsigned char	*s;
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
 
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	while (n && *d == *s)
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	i = 0;
+	while (i < n)
 	{
-		++d;
-		++s;
-		--n;
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		++i;
 	}
-	if (n)
-		return (*d - *s);
-	else
-		return (0);
+	return (0);
 }
-
-/*int main()
+/*
+int	main()
 {
-	char	str[] = "Ola e adeus";
-	char	str1[] = "Bom dia e boa noite";
-	ft_putnbr_fd(ft_memcmp(str, str1, 5), 1);
-}*/
+	char	s1[] = "HelloA";
+	char	s2[] = "HelloB";
+	
+	printf("%d\n", ft_memcmp(s1, s2, 6));
+}
+*/

@@ -6,13 +6,13 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 23:19:28 by jotavare          #+#    #+#             */
-/*   Updated: 2024/06/05 18:47:07 by davli            ###   ########.fr       */
+/*   Updated: 2024/06/06 10:54:05 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	signal_action(int pid, char *str)
+void	send_signal(int pid, char *str)
 {
 	int	i;
 	int	c;
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		signal_action(ft_atoi(argv[1]), argv[2]);
+		send_signal(ft_atoi(argv[1]), argv[2]);
 	}
 	return (0);
 }

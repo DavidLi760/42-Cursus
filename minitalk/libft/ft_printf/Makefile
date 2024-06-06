@@ -1,53 +1,32 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/20 04:29:14 by jotavare          #+#    #+#              #
-#    Updated: 2022/12/20 04:29:16 by jotavare         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+SRCS	=		ft_printf.c \
+			ft_printmem.c \
+			ft_putchar.c \
+			ft_puthex_lower.c \
+			ft_puthex_upper.c \
+			ft_putnbr.c \
+			ft_putstr.c \
+			ft_putunsigned.c
 
-NAME		= libftprintf.a
+OBJS	= ${SRCS:.c=.o}
 
-LIBFT		= ./libft/libft.a
-LIBFTDIR	= ./libft
+NAME	= libftprintf.a
 
-SRC			= ./files
+CC	= gcc
 
-PRINTF_SRCS	= ft_printf.c ft_printf_hex.c ft_printf_p.c \
-				ft_printf_un.c ft_printf_funcs.c
+FLAGS	= -Wall -Wextra -Werror
 
-OBJS		= $(PRINTF_SRCS:.c=.o)
+.c.o:
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
-CC			= cc 
-AR			= ar rcs
-RM			= rm -rf 
-CFLAGS		= -Wall -Wextra -Werror
-CP			= cp
+${NAME}:	${OBJS}
+		ar -rcs ${NAME} ${OBJS}
 
-all:		$(NAME)
-
-$(NAME):	$(LIBFT) $(OBJS)
-				$(CP) $(LIBFT) $(NAME)
-				@$(AR) $(NAME) $(OBJS)
-
-$(LIBFT):	$(LIBFTDIR)
-				@$(MAKE) -C $(LIBFTDIR)
-
-%.o: 		$(SRC)/%.c
-				@$(CC) $(CFLAGS) -c $< -o $@
+all:	${NAME}
 
 clean:
-			@$(MAKE) clean -C $(LIBFTDIR)
-			@$(RM) $(OBJS)
+		rm -f ${OBJS}
+fclean: clean
+		rm -f ${NAME}
+re:	fclean all
 
-fclean:		clean
-				@$(MAKE) fclean -C $(LIBFTDIR)
-				@$(RM) $(NAME)
-
-re:			fclean all
-
-.PHONY:		all clean fclean re
+.PHONY: all clean fclean re

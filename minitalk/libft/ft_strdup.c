@@ -3,34 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:09:18 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:09:22 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/20 17:23:16 by davli             #+#    #+#             */
+/*   Updated: 2024/05/20 17:25:18 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *src)
+char	*ft_strdup(const char *s)
 {
-	char	*dest;
-	size_t	len;
+	int		i;
+	char	*dup;
 
-	len = ft_strlen(src) + 1;
-	dest = malloc(len);
-	if (dest == NULL)
+	i = 0;
+	dup = malloc(ft_strlen(s) * sizeof(char) + 1);
+	if (!dup)
 		return (NULL);
-	ft_memcpy(dest, src, len);
-	return (dest);
+	while (s[i])
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }
-
-/*int	main()
+/*
+int	main()
 {
-	char	str[] = "Vou ser duplicado e nem te apercebes!";
-	char	str1[] = "Ve o valgrind!";
-	char	str2[] = "Ou o pyhtontutor!";
-	ft_putendl_fd(ft_strdup(str), 1);
-	ft_putendl_fd(ft_strdup(str1), 1);
-	ft_putendl_fd(ft_strdup(str2), 1);
-}*/
+	printf("%s\n", ft_strdup("Yo les gars"));
+}
+*/

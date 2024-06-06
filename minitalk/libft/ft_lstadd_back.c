@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 17:53:17 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 17:53:18 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/24 14:44:12 by davli             #+#    #+#             */
+/*   Updated: 2024/05/24 14:50:17 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,26 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*tmp;
-
-	if (*lst == NULL)
-	{
-		*lst = new;
+	if (!lst)
 		return ;
-	}
-	tmp = *lst;
-	while (tmp -> next)
-		tmp = tmp -> next;
-	tmp -> next = new;
+	if (!*lst)
+		*lst = new;
+	else
+		ft_lstlast(*lst)->next = new;
 }
+/*
+int	main()
+{
+	t_list	*lst = ft_lstnew("first");
+//	ft_lstadd_back(&lst, ft_lstnew("second"));
+//	ft_lstadd_back(&lst, ft_lstnew("third"));
+
+	t_list	*current = lst;
+	while (current)
+	{
+		printf("Element content: %s\n", (char *)current->content);
+		current = current->next;
+	}
+	return (0);
+}
+*/

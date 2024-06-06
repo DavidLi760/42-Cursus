@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 17:05:00 by davli             #+#    #+#             */
-/*   Updated: 2024/05/15 17:06:48 by davli            ###   ########.fr       */
+/*   Created: 2024/05/27 15:38:03 by davli             #+#    #+#             */
+/*   Updated: 2024/05/28 10:53:04 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isascii(int c)
+size_t	ft_putstr(char const *str)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	size_t	i;
+
+	i = 0;
+	if (!str)
+		return (write(1, "(null)", 6));
+	while (str[i])
+		write(1, &str[i++], 1);
+	return (i);
 }

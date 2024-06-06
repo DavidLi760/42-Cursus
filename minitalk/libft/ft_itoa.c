@@ -3,81 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 17:53:04 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 17:53:05 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/20 19:39:34 by davli             #+#    #+#             */
+/*   Updated: 2024/05/20 20:04:36 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_get_size(int n)
+static size_t	count_size(long nb)
 {
-	int	size;
+	size_t	size;
 
 	size = 0;
-	if (n <= 0)
-		size++;
-	while (n != 0)
+	if (nb < 0)
 	{
-		n = n / 10;
-		size++;
+		nb = nb * (-1);
+		size = 1;
+	}
+	if (nb == 0)
+		size = 1;
+	else
+	{
+		while (nb)
+		{
+			nb = nb / 10;
+			size++;
+		}
 	}
 	return (size);
 }
 
-static void	ft_fill_res(int size, int offset, int n, char *res)
-{
-	while (size > offset)
-	{
-		res[size - 1] = n % 10 + '0';
-		n = n / 10;
-		size--;
-	}
-}
-
 char	*ft_itoa(int n)
 {
-	int		offset;
-	int		size;
-	char	*res;
+	size_t	size;
+	long	nb;
+	char	*str;
+	int		sign;
 
-	offset = 0;
-	size = ft_get_size(n);
-	res = (char *)malloc(sizeof(char) * size + 1);
-	if (!res)
-		return (0);
-	if (n == -2147483648)
+	size = count_size((long) n);
+	str = (char *)malloc(sizeof(char) * (size + 1));
+	if (str == NULL)
+		return (NULL);
+	nb = (long)n;
+	sign = 0;
+	if (nb < 0)
 	{
-		res[0] = '-';
-		res[1] = '2';
-		n = 147483648;
-		offset = 2;
+		nb = nb * (-1);
+		str[0] = '-';
+		sign = 1;
 	}
-	if (n < 0)
+	str[size] = '\0';
+	while (size > (size_t)sign)
 	{
-		res[0] = '-';
-		offset = 1;
-		n = -n;
+		str[size - 1] = nb % 10 + '0';
+		nb = nb / 10;
+		size--;
 	}
-	ft_fill_res(size, offset, n, res);
-	res[size] = '\0';
-	return (res);
+	return (str);
 }
-
-/*int main()
+/*
+int	main()
 {
-	int	i = 125;
-	int	j = -814;
-	int	min = -2147483648;
-	int	max = 2147483647;
-	ft_putstr_fd(ft_itoa(i), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putstr_fd(ft_itoa(j), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putstr_fd(ft_itoa(min), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putstr_fd(ft_itoa(max), 1);
-	ft_putchar_fd('\n', 1);
-}*/
+	printf("%s", ft_itoa(-2147483648));
+}
+*/

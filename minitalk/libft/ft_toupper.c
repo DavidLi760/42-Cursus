@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:15:08 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:15:09 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/18 16:45:51 by davli             #+#    #+#             */
+/*   Updated: 2024/05/20 16:29:22 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,13 @@
 
 int	ft_toupper(int c)
 {
-	if ('a' <= c && c <= 'z')
-		return (c - 32);
-	else
-		return (c);
+	if (c >= 'a' && c <= 'z')
+		c = c - 32;
+	return (c);
 }
-
-/*int	main()
+/*
+int	main()
 {
-	ft_putchar_fd(ft_toupper('a'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putchar_fd(ft_toupper('u'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putchar_fd(ft_toupper('A'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putchar_fd(ft_toupper('5'), 1);
-	ft_putchar_fd('\n', 1);
-}*/
+	printf("%c", ft_toupper('c'));
+}
+*/

@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_puthex_upper.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 17:05:00 by davli             #+#    #+#             */
-/*   Updated: 2024/05/15 17:06:48 by davli            ###   ########.fr       */
+/*   Created: 2024/05/27 19:11:07 by davli             #+#    #+#             */
+/*   Updated: 2024/05/27 19:19:58 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-int	ft_isascii(int c)
+#include "ft_printf.h"
+
+size_t	ft_puthex_upper(unsigned int n)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	if (n / 16)
+		return (ft_puthex_upper(n / 16) + ft_puthex_upper(n % 16));
+	else if (!(n / 10))
+		ft_putchar(n + '0');
+	else
+		ft_putchar(n - 10 + 'A');
+	return (1);
 }

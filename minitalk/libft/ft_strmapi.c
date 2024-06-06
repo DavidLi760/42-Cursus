@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:13:21 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:13:23 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/21 19:15:37 by davli             #+#    #+#             */
+/*   Updated: 2024/05/21 20:11:42 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,39 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*new;
-	size_t	len;
+	char	*str;
 	size_t	i;
 
-	i = 0;
-	if (!s)
-		return (ft_strdup(""));
-	len = ft_strlen(s);
-	new = (char *)malloc(sizeof(char) * (len + 1));
-	if (!new)
+	str = ft_strdup(s);
+	if (!s || !str)
 		return (NULL);
-	while (i < len)
+	i = 0;
+	while (str[i])
 	{
-		new[i] = (*f)(i, s[i]);
-		++i;
+		str[i] = f(i, str[i]);
+		i++;
 	}
-	new[i] = 0;
-	return (new);
+	return (str);
 }
+/*
+int main() 
+{
+	char	to_alternate_case(unsigned int i, char c)
+	{
+		if (i % 2 == 0)
+			return ft_tolower(c);
+		else
+			return ft_toupper(c);
+	}
+	char	str[] = "HeLLo WoRLd!";
+	char	*result = ft_strmapi(str, to_alternate_case);
 
-/*char	ft_test(unsigned int i, char s)
-{
-	s += i;
+	if (result)
+	{
+		printf("Original: %s\n", str);
+		printf("Modified: %s\n", result);
+		free(result);
+	}
+	return 0;
 }
-int	main()
-{
-	char	str[] = "Ola";
-	ft_putendl_fd(ft_strmapi(str, ft_test), 1);
-}*/
+*/

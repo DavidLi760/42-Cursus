@@ -3,34 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:05:58 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:06:02 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/15 17:14:30 by davli             #+#    #+#             */
+/*   Updated: 2024/05/24 17:42:33 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t	i;
-	char	*string;
+	unsigned char	*str;
 
-	string = (char *)s;
-	i = 0;
-	while (i < n)
+	str = (unsigned char *)s;
+	while (n)
 	{
-		string[i] = c;
-		i++;
+		n--;
+		str[n] = c;
 	}
 	return (s);
 }
-
-/*int main()
+/*
+#include <stdio.h>
+int	main()
 {
-	char	str[] = "Ola bom dia";
-	char	c = 'u';
-	ft_putstr_fd(ft_memset(str, c, 12), 1);
-	ft_putchar_fd('\n', 1);
-}*/
+	int	i = 0;
+	char	tab[5];
+	ft_memset(tab, 'A', 5);
+	while (i < 5)
+	{
+		printf("%c", tab[i]);
+		i++;
+	}
+}
+*/

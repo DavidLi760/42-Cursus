@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:13:58 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:13:59 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/18 17:01:23 by davli             #+#    #+#             */
+/*   Updated: 2024/05/24 18:34:37 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,19 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*ptr;
+	size_t	i;
+	char	*s1;
 
-	ptr = NULL;
-	while (*s)
-	{
-		if (*s == (unsigned char)c)
-			ptr = (char *)s;
-		s++;
-	}
-	if (c == 0)
-		return ((char *)s);
-	return (ptr);
+	s1 = (char *)s;
+	i = ft_strlen(s) + 1;
+	while (i--)
+		if (s1[i] == (char)c)
+			return ((char *)s1 + i);
+	return (NULL);
 }
-
-/*int	main()
+/*
+int	main()
 {
-	char	str[] = "Onde esta o W? Ca esta ele";
-	char	c = 'W';
-	ft_putendl_fd(ft_strchr(str, c), 1);
-}*/
+	printf("%s\n", ft_strrchr("Salut tu vas bien?", 't'));
+}
+*/

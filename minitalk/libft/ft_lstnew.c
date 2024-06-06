@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:02:06 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 18:02:08 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/24 11:23:49 by davli             #+#    #+#             */
+/*   Updated: 2024/05/24 11:52:53 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,37 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*new;
+	t_list	*head;
 
-	new = malloc(sizeof(t_list));
-	if (new == NULL)
-	{
-		return (0);
-	}
-	new -> content = content;
-	new -> next = NULL;
-	return (new);
+	head = malloc(sizeof(t_list));
+	if (!head)
+		return (NULL);
+	head->content = content;
+	head->next = NULL;
+	return (head);
 }
-
-/*int	main(void)
+/*
+int	main()
 {
-	char	*str;
+	t_list	*elem1 = ft_lstnew("Salut");
+	t_list	*elem2 = ft_lstnew("Je m'appelle");
+	t_list	*elem3 = ft_lstnew("David");
 
-	t_list	*elem;
-	str = (char *)malloc(6*sizeof(char));
-	str = "Hello";
-	elem = ft_lstnew((void *)str);
-	printf("%s\n", (char *)elem->content);
-	free(new->content);
-}*/
+	if (!elem1 || !elem2 || !elem3)
+		return (0);
+	elem1->next = elem2;
+	elem2->next = elem3;
+
+	t_list *current = elem1;
+	while (current)
+	{
+		printf("%s\n", (char *)current->content);
+		current = current->next;
+	}
+
+	free(elem1);
+	free(elem2);
+	free(elem3);
+	return (0);
+}
+*/

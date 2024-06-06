@@ -3,34 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 17:50:59 by jotavare          #+#    #+#             */
-/*   Updated: 2022/11/22 17:51:01 by jotavare         ###   ########.fr       */
+/*   Created: 2024/05/15 17:01:39 by davli             #+#    #+#             */
+/*   Updated: 2024/05/20 17:05:32 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 int	ft_isalnum(int c)
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
+	if (ft_isdigit(c) || ft_isalpha(c))
+		return (1);
+	return (0);
 }
-
-/*int main()
-{
-	ft_putnbr_fd(ft_isalnum('1'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isalnum('A'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isalnum('F'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isalnum('1'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isalnum('5'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isalnum('x'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isalnum('\n'), 1);
-	ft_putchar_fd('\n', 1);
-}*/
