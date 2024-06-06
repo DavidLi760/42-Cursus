@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 23:19:28 by jotavare          #+#    #+#             */
-/*   Updated: 2024/06/06 10:54:05 by davli            ###   ########.fr       */
+/*   Updated: 2024/06/06 11:10:53 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	send_signal(int pid, char *str)
 			else
 				kill(pid, SIGUSR2);
 			i++;
-			usleep(100);
+			usleep(10);
 		}
 		str++;
 		i = 0;
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	if (argc != 3)
 	{
 		ft_printf("Error ./client <PID> <STRING>\n");
-		exit(EXIT_FAILURE);
+		return (0);
 	}
 	else
 	{
