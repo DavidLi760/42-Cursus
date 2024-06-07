@@ -37,6 +37,8 @@ Check OS used	:	cat /etc/os-release
 
 Check user/group:	getent group sudo/user42
 
+Check password rules:	sudo vim /etc/pam.d/common-password
+
 Create user	:	sudo adduser new_username
 
 Create group	:	sudo groupadd evaluating
