@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:19:28 by davli             #+#    #+#             */
-/*   Updated: 2024/06/10 16:04:24 by davli            ###   ########.fr       */
+/*   Updated: 2024/06/17 17:58:50 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ static int	no_double(char **av)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (av[i])
 	{
-		j = 1;
+		j = 0;
 		while (av[j])
 		{
 			if (j != i && nbrcmp(av[i], av[j]) == 0)
@@ -50,7 +50,7 @@ int	ft_check_arg(char **av)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (av[i])
 	{
 		if (!is_number(av[i]))

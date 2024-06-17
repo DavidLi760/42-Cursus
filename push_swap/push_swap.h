@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:20:01 by davli             #+#    #+#             */
-/*   Updated: 2024/06/17 17:07:25 by davli            ###   ########.fr       */
+/*   Updated: 2024/06/17 17:24:18 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-t_stack		*fill_stack(int ac, char **av);
+t_stack		*fill_stack(char **av);
 
 int			is_sorted(t_stack *stack);
 void		sort_3(t_stack **stack);

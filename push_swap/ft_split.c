@@ -6,99 +6,113 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:23:00 by davli             #+#    #+#             */
-/*   Updated: 2024/06/17 16:59:09 by davli            ###   ########.fr       */
+/*   Updated: 2024/06/17 18:13:47 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static char	**free_array(char **ptr, int i)
+static int	ft_strlen(char *str)
 {
-	while (i > 0)
-	{
-		i--;
-		free(ptr[i]);
-	}
-	free(ptr);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-static int	ft_count_words(char const *str, char c)
+static int	count_word(char *s, char c)
 {
 	int	i;
 	int	count;
 
 	i = 0;
 	count = 0;
-	while (str[i] != '\0')
+	while (s[i])
 	{
-		if (str[i] == c)
+		while (s[i] == c)
 			i++;
-		else
-		{
+		if (s[i])
 			count++;
-			while (str[i] && str[i] != c)
-				i++;
-		}
+		while (s[i] && s[i] != c)
+			i++;
 	}
 	return (count);
 }
 
-static char	*ft_putword(char *word, char const *s, int i, int word_len)
+static char	*between(char *str, char c, int index)
 {
-	int	j;
+	char	*word;
+	int		start;
+	int		j;
+	int		tmp;
 
+	start = index;
+	tmp = ft_strlen(str);
+	while (str[index] != c && index < tmp)
+		index++;
+	if (index == start)
+		return (NULL);
+	word = malloc(sizeof(char) * (index - start + 1));
+	if (!word)
+		return (NULL);
 	j = 0;
-	while (word_len > 0)
+	while (start < index)
 	{
-		word[j] = s[i - word_len];
+		word[j] = str[start];
 		j++;
-		word_len--;
+		start++;
 	}
 	word[j] = '\0';
 	return (word);
 }
 
-static char	**ft_split_words(char const *s, char c, char **s2, int num_words)
+static char	**make(char **res, char *s, char c, int len)
 {
 	int	i;
-	int	word;
-	int	word_len;
+	int	j;
 
 	i = 0;
-	word = 0;
-	word_len = 0;
-	while (word < num_words)
+	j = 0;
+	while (s[i] && j <= len)
 	{
-		while (s[i] && s[i] == c)
+		while (s[i] == c)
 			i++;
-		while (s[i] && s[i] != c)
+		if (s[i])
 		{
-			i++;
-			word_len++;
+			res[j] = between(s, c, i);
+			j++;
 		}
-		s2[word] = (char *)malloc(sizeof(char) * (word_len + 1));
-		if (!s2)
-			return (free_array(s2, word));
-		ft_putword(s2[word], s, i, word_len);
-		word_len = 0;
-		word++;
+		while (s[i] != c && s[i])
+			i++;
 	}
-	s2[word] = 0;
-	return (s2);
+	res[j] = 0;
+	return (res);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char			**s2;
-	unsigned int	num_words;
+	char	**res;
+	int		len;
 
-	if (!s)
-		return (0);
-	num_words = ft_count_words(s, c);
-	s2 = (char **)malloc(sizeof(char *) * (num_words + 1));
-	if (!s2)
-		return (0);
-	s2 = ft_split_words(s, c, s2, num_words);
-	return (s2);
+	len = count_word((char *)s, c);
+	res = malloc(sizeof(char *) * (len + 1));
+	if (!res)
+		return (NULL);
+	res = make(res, (char *)s, c, len);
+	return (res);
 }
+/*
+int	main(int ac, char **av)
+{
+	int	i;
+
+	i = 0;
+	(void)ac;
+	av = ft_split(av[1], ' ');
+	while (av[i])
+		printf("%s\n", av[i++]);
+	return (0);
+}
+*/
