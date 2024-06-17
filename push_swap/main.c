@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:42:16 by davli             #+#    #+#             */
-/*   Updated: 2024/06/17 17:24:30 by davli            ###   ########.fr       */
+/*   Updated: 2024/06/17 18:19:53 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,16 @@ int	main(int ac, char **av)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		stack_size;
+	int		i;
 
+	i = 0;
 	if (ac < 2 || !av[1][0])
 		return (0);
 	if (ac == 2)
 		av = ft_split(av[1], ' ');
+	else
+		while (av[i])
+			av[i++] = av[i + 1];
 	if (!ft_check_arg(av))
 	{
 		if (ac == 2)
