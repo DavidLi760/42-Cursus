@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:19:36 by davli             #+#    #+#             */
-/*   Updated: 2024/06/17 17:07:01 by davli            ###   ########.fr       */
+/*   Updated: 2024/06/17 18:34:59 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,21 @@ int	nbrcmp(const char *s1, const char *s2)
 	return ((unsigned char)s1[i] - (unsigned char)s2[j]);
 }
 
-void	free_split(char **av)
+void	free_split(int ac, char **av)
 {
 	int	i;
 
 	i = 0;
-	while (av[i])
-		free(av[i++]);
-	free(av);
+	if (ac == 2)
+	{
+		while (av[i])
+			free(av[i++]);
+		free(av);
+	}
+}
+
+void	free_both(t_stack **a, t_stack **b)
+{
+	ft_free(a);
+	ft_free(b);
 }

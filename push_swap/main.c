@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:42:16 by davli             #+#    #+#             */
-/*   Updated: 2024/06/17 18:19:53 by davli            ###   ########.fr       */
+/*   Updated: 2024/06/17 18:35:59 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,14 @@ int	main(int ac, char **av)
 			av[i++] = av[i + 1];
 	if (!ft_check_arg(av))
 	{
-		if (ac == 2)
-			free_split(av);
+		free_split(ac, av);
 		exit_error(NULL, NULL);
 	}
 	stack_b = NULL;
 	stack_a = fill_stack(av);
 	stack_size = get_stack_size(stack_a);
 	push_swap(&stack_a, &stack_b, stack_size);
-	ft_free(&stack_a);
-	ft_free(&stack_b);
-	if (ac == 2)
-		free_split(av);
+	free_both(&stack_a, &stack_b);
+	free_split(ac, av);
 	return (0);
 }
