@@ -6,7 +6,7 @@
 /*   By: davli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:20:01 by davli             #+#    #+#             */
-/*   Updated: 2024/06/17 17:24:18 by davli            ###   ########.fr       */
+/*   Updated: 2024/06/17 18:40:53 by davli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void		sort_3(t_stack **stack);
 
 int			get_lowest(t_stack **stack);
 char		**ft_split(char const *s, char c);
-void		free_split(char **av);
+void		free_split(int ac, char **av);
+void		free_both(t_stack **a, t_stack **b);
 
 void		get_cost(t_stack *stack_a, t_stack *stack_b);
 void		sort_stacks(t_stack **stack_a, t_stack **stack_b);
