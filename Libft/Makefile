@@ -30,6 +30,7 @@ SRCS 	=	ft_atoi.c \
 		ft_putchar_fd.c \
 		ft_split.c \
 		ft_strlcat.c \
+		ft_strcmp.c \
 		ft_strncmp.c \
 		ft_substr.c
 OBJS 	=	${SRCS:.c=.o}
