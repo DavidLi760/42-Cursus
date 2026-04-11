@@ -1,0 +1,12 @@
+{
+    ignore_libeadline_leaks
+    Memcheck:Leak
+    ...
+    obj:*/libreadline.so.*
+}
+
+{
+   ignore_still_reachable
+   Memcheck:Leak
+   fun:*
+}
