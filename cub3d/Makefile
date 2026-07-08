@@ -1,6 +1,6 @@
 NAME		= cub3D
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror -g -Wno-incompatible-pointer-types
 LFLAGS		= -lX11 -lmlx -lXext -lm -lz -Lmlx
 MLX			= mlx/libmlx.a
 SRCS		=	main.c\

@@ -22,7 +22,7 @@ void	walking_w(t_var *var)
 		(var->forbidden[(int)var->posy \
 		+ 5][(int)(var->posx + var->directx) + 5] == '0'))
 			var->posx += var->directx * \
-			(0.5 + (var->shift_pressed && var->energy < 190) * 0.5);
+(0.5 + (var->shift_pressed && var->energy < 190) * 0.5);
 		else if (var->w_pressed == 1 && \
 		(var->forbidden[(int)var->posy \
 		+ 5][(int)(var->posx + var->directx) + 5] != '0')
